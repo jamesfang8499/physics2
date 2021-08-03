@@ -203,7 +203,32 @@
 
 \begin{figure}
 \centering
-\includegraphics[scale=.8]{fig/1-3.png}
+    \begin{tikzpicture}[>=latex, scale=1]
+\draw[dashed] (0,2) arc (90:150:2);
+\draw[dashed] (0,2) arc (90:50:2);
+\draw (0,6) arc (90:140:6);
+\draw (0,6) arc (90:70:6);
+\draw (0,0) [fill=black] circle (2.5pt)node[below]{$O$};
+\draw (90:2) [fill=black] circle (2.5pt)node[right]{$b$};
+\draw (90:6) [fill=black]circle (2.5pt)node[above]{$B$};
+\draw (110:2) [fill=black]circle (2.5pt)node[left]{$a$};
+\draw (110:6) [fill=black]circle (2.5pt)node[above]{$A$};
+
+\draw[->] (0,0)--node[below]{$R$}(130:6);
+\draw[very thick]  (0,0)--(90:6);
+\draw[very thick]    (0,0)--(110:6);
+\draw[very thick,->] (0,0)--(90:3.8);
+\draw[very thick, ->] (0,0)--(110:3.8);
+\draw [<->] (0,3) arc (90:110:3)node[right]{$\alpha$};
+\draw[->] (0,0)--node[above]{$r$}(60:2);
+
+\draw (1,4)--(90:4);
+\draw (1,4)node[right]{离子的轨迹}--(110:3.3);
+
+\draw (90:2)--(1,3)node[right]{钨原子};
+\draw (110:2)--(1,3);
+
+    \end{tikzpicture}
 \caption{计算离子显微镜的
 放大倍数，图中的
 $a$和$b$表示钨针针
