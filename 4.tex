@@ -138,14 +138,18 @@
 
 有的物质能够生成种类不同的几种晶体，是因为它们的物质微粒能够形成不同的空间点阵．例如，碳原子如果按图4.6那样排列就成为石墨，按图4.7那样排列就成为金刚石．石墨是层状结构，层与层之间距离较大，作用力较弱，沿着这个方向容易把石墨一层层地剥下．金刚石中碳原子间的作用力很强，所以金刚石有很大的硬度．
 \begin{figure}[htp]\centering
-\includegraphics[scale=1.1]{fig/4-6.pdf}
+	\begin{minipage}[t]{0.48\textwidth}
+		\centering
+\includegraphics[scale=1.3]{fig/4-6.pdf}
 \caption{石墨的空间点阵}
+	\end{minipage}
+	\begin{minipage}[t]{0.48\textwidth}
+		\centering
+\includegraphics[scale=1.3]{fig/4-7.pdf}
+\caption{金刚石的空间点阵}
+	\end{minipage}
 \end{figure}
 
-\begin{figure}[htp]\centering
-\includegraphics[scale=1.1]{fig/4-7.pdf}
-\caption{金刚石的空间点阵}
-\end{figure}
 
 \section{液体的微观结构}
 液体的性质介于气体和固体之间．液体一方面象固体，具有一定的体积，不易压缩；另一方面又象气体，没有一定的形状，具有流动性．液体汽化时体积改变上千倍，凝固时体积改变不过百分之十．液体更接近于固体．
@@ -248,28 +252,24 @@
 玻璃，器壁附近的液面向下弯曲（图4.13），在内径较小的容器里，这种现象更显著，液面形成凹形或凸形的弯月面．
 
 \begin{figure}[htp]\centering
-	\begin{tikzpicture}[>=stealth, scale=1 ]
+	\begin{minipage}[t]{0.48\textwidth}
+		\centering
+	\begin{tikzpicture}[>=stealth, scale=.8]
 \fill [pattern=north east lines](-.25,0) rectangle(0,5);
 \fill [gray!20] (0,0) rectangle (3,3);
 \fill [gray!20] (0,3)--(1,3)--(0,4);
 \draw [fill=white, thick](0,4) arc(180:270:1);
 \draw[thick](1,3)--(3,3);
 \draw (0,0)--(0,5);
-
-
 \fill [gray!20] (4, 0) rectangle (4.5, 5);
 \draw [fill=white, rounded corners=0.2cm](4.5, 5)--(4.5, 4)--(4,4)--(4,5);
 \draw (4, 0)--(4,5);
 \draw (4.5, 0)--(4.5,5);
-
-
-
 \end{tikzpicture}
 \caption{液体浸润固体}
-\end{figure}
-
-\begin{figure}[htp]\centering
-	\begin{tikzpicture}[>=stealth, scale=1 ]
+    \end{minipage}
+\begin{minipage}[t]{0.48\textwidth}\centering
+	\begin{tikzpicture}[>=stealth, scale=.8]
 
 \fill [gray!50] (0,0) rectangle (3,2);
 \fill [gray!50] (1,2) rectangle (3,3);
@@ -282,11 +282,9 @@
 \draw (4.5, 0)--(4.5,5);
 \fill [pattern=north east lines](-.25,0) rectangle(0,5);
 \draw (0,0)--(0,5);
-
-
-
 \end{tikzpicture}
 \caption{液体不浸润固体}
+    \end{minipage}
 \end{figure}
 
 浸润和不浸润现象也是分子力作用的表现．当液体与固体接触时，在接触处形成一个液体薄层，叫做\textbf{附着层}．附着层里的分子既受到固体分子的吸引，又受到液体内部分子的吸引．如果受到的固体分子的吸引比较弱，附着层里的分子就比液体内部稀疏，在附着层就出现跟表面张力相似的收缩力，这时跟固体接触的液体表面有缩小的趋势，形成不浸润现象．相反，如果受到的固体分子的吸引相当强，附着层里的分子就比液体内部更密，在附着层里就出现液体相互推斥的力，这时跟固体接触的液体表面有扩展的趋势，形成浸润现象．
@@ -303,6 +301,7 @@
 反，管里的水银面比容器里的水银面低．管的内径越小，管里
 的水银面越低（图4.15）．
 \begin{figure}[htp]\centering
+	\begin{minipage}[t]{0.48\textwidth}\centering
 	\begin{tikzpicture}[>=stealth, scale=.8 ]
 \draw [fill=gray!20, rounded corners=0.2cm, thick](0,5)--(0, 0)--(6,0)--(6,5);
 \draw [fill=white, rounded corners=0.15cm](0,5)--(0,2)--(1.5,2)--(1.5,5);
@@ -323,9 +322,8 @@
 \end{tikzpicture}
 \caption{浸润液体在毛细管里上升
 }
-\end{figure}
-
-\begin{figure}[htp]\centering
+  \end{minipage}
+\begin{minipage}[t]{0.48\textwidth}\centering
 	\begin{tikzpicture}[>=stealth, scale=.8 ]
 \draw [fill=gray!50, rounded corners=0.2cm, thick](0,1)--(0, 0)--(6,0)--(6,1);
 
@@ -350,6 +348,7 @@
 \end{tikzpicture}
 \caption{不浸润液体在毛细管里下降
 }
+    \end{minipage}
 \end{figure}
 
 象这样浸润液体在细管里上升的现象和不浸润液体在细管里下降的现象，叫做\textbf{毛细现象}．发生毛细现象的管叫做毛细管．
