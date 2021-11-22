@@ -385,7 +385,7 @@ $U>IR$.
 
 \begin{figure}[htp]
     \centering
-  %  \includegraphics[scale=.7]{fig/7-1.png}
+  \includegraphics[scale=.7]{fig/7-1.png}
     \caption{}
 \end{figure}
 \item 对串联电路的电压分配和功率分配关系可通过下面
@@ -868,12 +868,12 @@ $I_2$、$U_2$. 不难看出电动机两端电压$U_2>I_2R$。 通过实际计算
 \begin{figure}[htp]\centering
     \begin{minipage}[t]{0.48\textwidth}
     \centering
- %\includegraphics[scale=.8]{fig/7-2.png}
+ \includegraphics[scale=.7]{fig/7-2.png}
     \caption{}
     \end{minipage}
     \begin{minipage}[t]{0.48\textwidth}
     \centering
- %\includegraphics[scale=.8]{fig/7-3.png}
+ \includegraphics[scale=.7]{fig/7-3.png}
     \caption{}
     \end{minipage}
     \end{figure}
@@ -963,7 +963,15 @@ $I_2$、$U_2$. 不难看出电动机两端电压$U_2>I_2R$。 通过实际计算
 
 \begin{figure}[htp]
     \centering
-     %\includegraphics[scale=.8]{fig/7-4.png}
+\begin{circuitikz}[european, >=latex]
+\draw(0,0) to [battery2] (2,0) to [cute open switch](4,0) to [R] (6,0)--
+(6,3) to [rmeter, t=V](0,3)--(0,2) to [rmeter, t=A](0,0);
+\draw(0,2)to [R, *-*](6,2);
+
+\node at (3,0)[below]{$K$};    
+\draw[->](5.8,0)--(5.8,.7)--(5,.7)--(5,.2);
+\end{circuitikz}
+
     \caption{}
 \end{figure}
 
@@ -1023,7 +1031,7 @@ $r_g$; 它产生的相对误差不大于1\%,若受实验条件限制，取$R\ge
 \subsubsection{用安培表和伏特表测定电池的电动势和内阻}
 这个实验应注意以下几个问题。
 
-实验器材的选择．要引导他们分析教材276页图
+实验器材的选择．要引导他们分析教材图
 9.9所示电路，了解实验时应选用较大内阻的伏特表和较小
 阻值的变阻器。伏特表内阻越大，变阻器阻值越小，安培表的
 读数就越接近通过电池的真实电流，实验误差就会越小。但变
@@ -1097,7 +1105,19 @@ $r_g$; 它产生的相对误差不大于1\%,若受实验条件限制，取$R\ge
 
 \begin{figure}[htp]
     \centering
-% \includegraphics[scale=.7]{fig/7-5.png}
+\begin{circuitikz}[european]
+      \begin{scope}
+\draw(0,0) to [battery2] (2,0) to [cute open switch](4,0)--(4,3) to [R=$R_1$](0,3)--(0,0);
+\draw(4,1.5)to [R=$R_2$, *-*](0,1.5);
+\node at (3,0)[below]{$K$};
+\node at (2,-1){甲};
+\end{scope}  
+\begin{scope}[xshift=5cm]
+\draw(0,0) to [battery2] (2,0) to [cute open switch](4,0)--(4,3) to [R=$R_2$](2,3) to [R=$R_1$](0,3)--(0,0);
+\node at (3,0)[below]{$K$};
+\node at (2,-1){乙};
+\end{scope}
+\end{circuitikz}    
     \caption{}
 \end{figure}
 
@@ -1164,10 +1184,1589 @@ $r_g$; 它产生的相对误差不大于1\%,若受实验条件限制，取$R\ge
 \section{习题解答}
 
 \subsection{练习一}
+\begin{enumerate}
+    \item 导线中的电流强度为10安，20秒钟内有多少电子通过导线的横截面？
+    
+\begin{solution}
+    根据
+    $I=q/t,\quad q=ne$
+    可得电子数
+    \[n=\frac{It}{e}=\frac{10\x20}{1.60\x10^{-19}}
+    =1.3\x10^{21}\text{(个)}\]
+\end{solution}
+    \item 手电筒小灯泡上的电压是3伏时，电阻为8.5欧，求通过小灯泡的电流强度．
+    
+    \begin{solution}
+        由欧姆定律
+       $ I=U/R$
+        得：通过小灯泡的电流强度
+    \[I=\frac{3}{8.5}=0.35{\rm A}\]    
+    \end{solution}
+    \item 人体通过50毫安的电流时，就会引起呼吸器官麻痹，如果人体的最小电阻为800欧，求人体的安全工作电压．
+    
+    \begin{solution}
+        由欧姆定律
+       $ I=U/R$，可知人体的安全工作电压为
+       \[U=IR=50\x 10^{-3}\x 800=40{\rm V}\]
+    \end{solution}
+    \item 根据上题中所给的数字说明：为什么人体触到220伏的电线时会发生危险，而接触干电池的两极（电压为1.5伏）时却没有感觉？
+    
+    \begin{solution}
+          人体触到220伏的电线时，通过人体的电流强度
+可达
+\[I=\frac{U}{R}=\frac{220}{800}=0.275{\rm A}=275{\rm mA}\]
+远大于50毫安，所以会发生危险．
+
+人体接触干电池的两极时，通过人体的电流强度仅为
+\[I=\frac{U}{R}=\frac{1.5}{800}=0.0019{\rm A}=1.9{\rm mA}\]
+远小于50毫安，所以没有感觉．      
+    \end{solution}
+    \item 电路中有一电阻，测得通过它的电流强度是2毫安时，电阻两端的电压是50毫伏，在通过它的电流强度为15毫安时，它两端的电压是多大？
+    
+    \begin{solution}
+        由欧姆定律$ I=U/R$，求出电阻的阻值
+        \[R=\frac{U_1}{I_1}=\frac{50\x 10^{-3}}{2\x 10^{-3}}=25\Omega\]
+        再由欧姆定律求出在通过该电阻的电流强度为15毫安时，电
+        阻两端的电压
+        \[U_2=I_2R=15\x10^{-3}\x25=375\x10^{-3}{\rm V}=
+        375{\rm mV}\]
+
+        也可用比例关系解此题。由欧姆定律知：当导体电阻一
+        定时，通过导体的电流强度跟导体两端电压成正比。
+     \[   I_1:I_2=U_1:U_2\]
+        则
+  \[      U_2=\frac{I_2U_1}{I_1}=\frac{15\x50}{2}{\rm mV}=375{\rm mV}\]
+    \end{solution}
+    \item 画出电限为5欧的导体的伏安特性曲线，当导体的电阻增大为10欧时，图线持怎样变化？电阻减小为2.5欧时呢？
+    
+    \begin{solution}
+        电阻为5欧、10欧和2.5欧时的伏安特性曲线分别
+        如图7.6所示．
+\begin{figure}[htp]
+    \centering
+\begin{tikzpicture}[>=latex]
+\draw[<->, thick](0,4)node[right]{$I(A)$}--(0,0)--(4,0)node[right]{$U(V)$};
+\foreach \x/\xtext in {1/5,2/10,3/15}
+{
+    \draw(\x,0)node[below]{$\xtext$}--(\x,.1);
+    \draw (0,\x)node[left]{$\x$}--(.1,\x);
+}
+\draw[dashed](0,2)--(2,2)--(2,0);
+\draw[dashed](1,0)--(1,2);
+\draw[dashed](0,1)--(2,1);
+\draw[domain=0:1.7, samples=10, thick] plot(\x, {2*\x})node[above]{$R=2.5\Omega$};
+\draw[domain=0:2.5, samples=10, thick] plot(\x, {\x})node[right]{$R=5\Omega$};
+\draw[domain=0:3, samples=10, thick] plot(\x, {.5*\x})node[right]{$R=10\Omega$};
+\node at (-.2,-.2){$O$};
+\end{tikzpicture}
+    \caption{}
+\end{figure}
+从图中可以看出：当导体电阻由5欧增大为10欧时，图
+线的斜率变小；当电阻减小为2.5欧时，图线斜率增大。
+    \end{solution}
+\end{enumerate}
 
 
 
 
+\subsection{练习二}
+
+\begin{enumerate}
+    \item 图7.7是滑动变阻器的结构图，涂有绝缘漆的电阻丝密绕在瓷管上，$A$、$B$是它的两个端点，滑动端$P$可在金属杆上移动，它通过金属片与电阻丝接触，把电阻丝和金属杆连接起来．如果把固定端$A$和接线柱$C$接入电路中，当滑动端从$B$向$A$移动时，电路中的电阻就随着变小，说明其道理．
+    \begin{figure}[htp]\centering
+       \includegraphics[scale=1.5]{fig/7-4.PDF}
+        \caption{滑动变阻器}
+        \end{figure}
+
+\begin{solution}
+    根据电阻定律$R=\rho\ell/S$,
+    可知均匀电阻丝的电阻跟它
+    的长度成正比。当滑动端$P$从$B$向$A$移动时，接入电路中的
+    电阻丝长度变短，所以电阻随着变小。
+\end{solution}
+
+    \item 一卷铝导线长100米，横截面积为1${\rm mm}^2$，这卷导线的电阻是多大？
+
+    \begin{solution}
+        由电阻定律得$R=\rho\ell/S$，
+        查表可知铝的电阻率$\rho=
+        2.9\x10^{-8}\Omega\cdot {\rm m}$，则这卷铝线的电阻
+\[R=2.9\x 10^{-8}\x\frac{100}{1\x 10^{-6}}=2.9\Omega\]
+    \end{solution}
+    
+    \item 有一段导线，电阻是4欧，把它对折起来作为一条导线用，电阻是多大？如果把它均匀拉长到原来的两倍，电阻又是多大？
+
+    \begin{solution}
+已知$R=\rho\ell/S=4$欧，把它对折后$\ell_1=\frac{1}{2}\ell$，
+$S_1=2S$，则这时导线电阻
+\[R_1=\rho\frac{\frac{1}{2}\ell}{2S}=\frac{1}{4}R=1\Omega\]
+
+把它均匀括长到原来的两倍后，$\ell_2=2\ell$, $S_2=\frac{1}{2}S$，则这时导线电阻
+\[R_2=\rho\frac{2\ell}{\frac{1}{2}S}={4}R=16\Omega\]
+    \end{solution}
+    
+    \item 一根做电学实验用的铜导线，长度是60厘米，横截面积是0.5${\rm mm}^2$，它的电阻是多少欧？一根输电用的铜导线，长度是10千米，横截面积是1${\rm cm}^2$，它的电阻是多少欧？为什么做电学实验时可以不考虑连接用的铜导线的电阻，而对输电线路的导线的电阻则需要考虑？
+
+    \begin{solution}
+做电学实验用的铜导线的电阻
+\[R_1=\rho\frac{\ell_1}{S_1}=1.7\x 10^{-8}\x \frac{0.6}{0.5\x 10^{-6}}=0.02\Omega\]
+
+输电铜导线的电阻
+\[R_2=\rho\frac{\ell_2}{S_2}=1.7\x 10^{-8}\x \frac{10\x 10^{3}}{1\x 10^{-4}}=1.7\Omega\]
+从计算结果可以看出：做电学实验时，连接用的铜导线的电阻很小，对电路中电流强度的影响甚微，因此可以不予考
+虑；而输电线的电阻较大，足以影响电路中的电流强度，所以
+需要考虑。
+    \end{solution}
+    
+    \item 一根电阻丝长10米，横截面积是0.2${\rm mm}^2$，两端加上10伏电压时，通过的电流强度是0.2安．这根电阻丝的电阻率是多大？它是用什么材料制作的？
+
+    \begin{solution}
+由欧姆定律$I=U/R$，知电阻丝的电阻
+\[R=\frac{U}{I}=\frac{10}{0.2}=50\Omega\]
+又因$R=\rho\ell/S$，则电阻丝的电阻率
+\[\rho=\frac{RS}{\ell}=\frac{50\x0.2\x10^{-6}}{10}=1.0\x 10^{-6}\Omega\cdot {\rm m}\]
+查表得知它是用镍铬合金制作的。
+    \end{solution}
+    
+\end{enumerate}
+
+
+
+\subsection{练习三}
+\begin{enumerate}
+    \item 额定电压相同、额定功率不同的两只灯泡，哪个的额定电流大？哪个的电阻大？
+
+    \begin{solution}
+    由$P=UI$, 有$I=P/U$。
+可见额定电压相同时，灯泡的
+额定电流与额定功率成正比，额定功率大的灯泡额定电流大。
+因灯泡是纯电阻元件，故$P=U^2/R$, 
+即$R=U^2/P$。
+可见电阻与额定功率成反比，额定电压相同的两只灯泡，额定功率小的灯泡电阻大。
+    \end{solution}
+    
+    \item 用户保险盒中安装的保险续允许通过的最大电流一般都不大（几个安培），如果在电路中接入功率在1000瓦以上的用电器，如电炉等，就会把保险丝烧断，这是为什么？
+
+    \begin{solution}
+因为功率为1000瓦以上的用电器的工作电流为
+$I=P/U=\frac{1000}{220}=4.55{\rm A}$以上，把它接入电路后，如果电路中的
+电流强度超过保险丝允许通过的最大电流（几安培），就会把
+保险丝烧断。
+    \end{solution}
+    
+    \item 日常使用的电功单位是“度”，等于功率为1千瓦的电流在1小时内做的功，又叫千瓦时，1度等于多少焦？
+
+    \begin{solution}
+        因$W=Pt$, 故$1\text{度}=1000{\rm W}\x3600{\rm s}=3.6\x10^6{\rm J}$
+    \end{solution}
+    
+    \item 有一个1千瓦、220伏的电炉，正常工作时电流是多少？如果不考虑温度对电阻的影响，把它接在110伏的电压上，它的功率将是多少？
+
+    \begin{solution}
+因$P=UI$, 故正常工作时，通过电炉的电流是
+\[I=\frac{P}{U}=\frac{1000}{220}=4.55{\rm A}\]
+该电炉的电阻为$R=U/I=\frac{220}{4.55}=48.4\Omega$。
+把它接到110伏的电压上，它的功率将是
+\[P'=\frac{U'}{R}=\frac{110^2}{48.4}=250{\rm W}\]
+    \end{solution}
+    
+    \item 输电线的电阻共计1.0欧，输送的电功率是100千瓦，用400伏的低压送电，输电线上发热损失的功率是多少千瓦？改用1万伏的高压送电呢？
+
+    \begin{solution}
+因$P=UI$, 故输电线上电流为$I=P/U$，则输电线上发热损失的功率
+\[P_{\text{热}}=I^2R_{\text{线}}=\left(\frac{P}{U}\right)^2R_{\text{线}}\]
+当用400伏低压送电时，
+\[P_{\text{热}}=\left(\frac{100\x 10^3}{400}\right)^2\x 1.0=6.25\x 10^4{\rm W}=62.5{\rm kW}\]
+当用1万伏高压送电时
+\[P'_{\text{热}}=\left(\frac{100\x 10^3}{10^4}\right)^2\x 1.0=100{\rm W}=0.1{\rm kW}\]
+    \end{solution}
+    
+    \item 用功率为2千瓦的电炉把2千克的水从20$^\circ$C加热到100$^\circ$C，如果电炉的效率为30\%，需要多少时间？水的比热为$4.2\x10^3{\rm J}/({\rm kg}\cdot {}^\circ {\rm C})$．
+
+    \begin{solution}
+把2千克水从$20^{\circ}{\rm C}$加热到$100^{\circ}{\rm C}$需吸收热量
+$Q=cm\Delta T$.
+
+设电炉需通电的时间为$t$秒，则电功为
+$W=Pt$.
+
+由题设条件电炉的效率$\eta=0.3$, 故
+$\eta Pt=cm\Delta T$
+所以
+\[t=\frac{cm\Delta T}{\eta P}=\frac{4.2\x10^3\x2\x(100-20)}{0.3\x 2000}=1120{\rm s}\]
+    \end{solution}
+    
+\end{enumerate}
+
+
+\subsection{练习四}
+\begin{enumerate}
+    \item 电炉和导线是串联的，把它们接入电源后，导线和电炉丝中通过的电流强度是否一样？为什么这时电炉丝热得发红，导线并不热？
+
+    \begin{solution}
+因为流过串联电路各电阻的电流强度相等，所以导线
+和电炉丝中通过的电流强度是一样的。但由于电流通过导体
+产生的热量$Q=I^2Rt$与导体的电阻$R$成正比，电炉丝的电阻
+远比导线电阻大且散热又不好，故电炉丝热得发红，而导线并
+不热。    
+    \end{solution}
+    \item 某同学要为游艺晚会准备一棵装有彩色电灯的小松树，如果所用的每只灯泡的额定电压是8伏，用220伏的市电做电源，那么需要将多少只灯泡串联在一起才能接在电源上？
+
+    \begin{solution}
+ 设需将$n$只灯泡串联起来接在电源上。
+因为$U=nU_1$，则
+\[n=\frac{U}{U_1}=\frac{220}{8}\approx 28\text{(只)}\]   
+    \end{solution}
+    \item 一个量程为150伏的电压表，内阻为20千欧，把它与一高电阻串联后接在110伏的电路上，电压表的读数是5伏．求高电阻的阻值是多少？（这是测量高电阻的一种方法）
+
+    \begin{solution}
+电压表的读数就是电压表两端的电压。
+
+设电压表内阻为$R_1$, 其两端电压为$V_1$; 高电阻的阻值为
+$R_2$, 两端的电压为$U_2$, 串联电路的电流强度为$I$.
+
+因为串联电路两端电压等于各部分电路电压之和，$U=
+U_1+U_2$, 所以可求出$R_2$上的电压
+\[U_2=U-U_1=110-5=105{\rm V}\]
+从$U=IR$, 可得串联电路中的电流强度
+\[I=\frac{U_1}{R_1}=\frac{5}{20\x10^3}=2.5\x 10^{-4}{\rm A}\]
+于是，高电阻
+    \[R_2=\frac{U_2}{I}=\frac{105}{2.5\x 10^{-4}}=4.2\x 10^{5}\Omega=420{\rm k}\Omega\]
+
+    $R_2$也可以利用串联电路的电压分配公式求得．因为
+\[\frac{U_1}{R_1}=\frac{U_2}{R_2},\qquad U=U_1+U_2\]
+由此可得：
+\[R_2=\frac{(U-U_1)R_1}{U_1}=\frac{(110-5)\x 20}{5}{\rm k}\Omega=420{\rm k}\Omega\]
+    \end{solution}
+    \item 直流电动机线圈的电阻很小，所以起动时的电流很大，这对电动机本身和接在同一电源上的其他用电器都产生不良的后果．为了减小电动机起动时的电流，需要给电动机串联一个起动电阻$R$，如图7.8所示，电动机起动后再将$R$逐渐减小，如果电源电压$U=220$伏，电动机的线圈电阻$r_0=2$欧，那么，
+    \begin{enumerate}
+        \item 不串联电阻$R$时的起动电流是多大？
+        \item 为了使起动电流减小为20安，起动电阻应为多大？
+    \end{enumerate}
+
+\begin{figure}[htp]
+\centering
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+        \begin{circuitikz}[european,>=stealth]
+            \draw(0,0)--(5,0) to  (5,3);
+            \draw (0,3) to [vR=$R$] (5,3);
+            
+            \draw[<->](0,.1) to node [fill=white]{$U$} (0,3-.1);
+            \draw (5,1.5) node[elmech]{};
+            \draw [fill=white](0,0) circle (2pt);
+            \draw [fill=white](0,3) circle (2pt);  
+            \node at (5.7, 1.5){$r_0$};
+        \end{circuitikz}
+    
+        \caption{}
+        \end{minipage}
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\begin{circuitikz}[european,>=latex]
+    \draw (0,0)--(2,0) to [R=$R_3$] (2,2) to [R=$R_2$] (2,4) to [R=$R_1$] (2,6)--(0,6);
+    \draw (2,0)--(4,0)node[right]{$b$};
+    \draw [<-](2.2,3)--(4,3)node[right]{$a$};
+    \draw [fill=white](4,3) circle (2pt);
+    \draw [fill=white](4,0) circle (2pt);      
+    \draw [fill=white](0,0) circle (2pt);
+    \draw [fill=white](0,6) circle (2pt);   
+    \draw[<->](0,.1) to node [fill=white]{$U$} (0,6-.1);
+    \node at (2.4,2.7){$P$}; 
+        \end{circuitikz}
+\caption{}
+\end{minipage}
+\end{figure}
+
+    \begin{solution}
+根据欧姆定律，不串联起动电阻$R$时的起动
+电流
+\[I=\frac{U}{r_0}=\frac{220}{2}=110{\rm A}\]
+
+串联起动电阻后，电路的总电阻
+\[R_{\text{总}}=\frac{U}{I}=\frac{220}{20}=11\Omega\]
+因$R_{\text{总}}=R+r_0$, 故起动电阻$R=R_{\text{总}}-r_0=11-2=9\Omega$
+    \end{solution}
+    \item 图7.9是一个变阻器分压电路，如果电压$U=12$伏，$R_1=350$欧，$R_2=270$欧，$R_3=550$欧，那么，滑动端$P$从$R_2$下端向上移动时，$a$、$b$间的电压将怎样变化？当$P$在$R_2$最下端和最上端时，$a$、$b$间的电压各是多少？
+
+    \begin{solution}
+   滑动端$P$从$R_2$下端向上移动，$a$、$b$间的电压将
+增大。
+
+当$P$在$R_2$最下端时，$a$、$b$间电压即为$R_3$两端电压。因为
+串联电路的电流强度 
+\[I=\frac{U}{R_1+R_2+R_3}\]
+故\[U_{ab}=IR_3=\frac{UR_3}{R_1+R_2+R_3}=\frac{12\x 550}{350+270+550}=5.6{\rm V}\]
+
+当$P$在$R_2$最上端时，$a$、$b$间电压即为$R_2+R_3$两端的
+电压，则
+\[U'_{ab}=I(R_2+R_3)=\frac{U(R_2+R_3)}{R_1+R_2+R_3}=\frac{12\x (270+550)}{350+270+550}=8.4{\rm V}\]
+    \end{solution}	
+\end{enumerate}
+
+
+
+
+
+\subsection{练习五}
+\begin{enumerate}
+    \item 电路中需要一个阻值为15千欧的电阻，现在手边只有几只10千欧的电阻，怎样才能组成一个15千欧的电阻？
+    
+
+    \begin{solution}
+        两只10千欧的电阻并联，其等效电阻
+        \[R_{\text{并}}=\frac{1}{2}R=\frac{1}{2}\x 10=5{\rm k}\Omega\]
+        再把它跟一只10千欧的电阻串联，总电阻
+        \[R_{\text{总}}=R+R_{\text{并}}=10+5=15{\rm k}\Omega\]
+        符合题目的要求。   
+    \end{solution}
+    
+    \item 在图7.10所示的电路中，$R_1=10$欧，$R_2=30$欧，$U=6$伏，电键$K$合上前后，
+    \begin{enumerate}
+        \item 电路中的总电阻各是多少？
+        \item 通过$R_1$、$R_2$的电流强度各是多少？
+        \item $R_1$、$R_2$上消耗的功率各是多少？
+    \end{enumerate}
+    \begin{figure}[htp]\centering
+        \begin{circuitikz}[european, >=latex]
+            \draw (0,0) -- (5,0) to [R=$R_2$] (5,2.5) to [cute open switch] (5,4)-- (0,4);
+            \draw (3,0) to [R=$R_1$, *-*] (3,4);
+            \draw [fill=white](0,4) circle (2pt);
+            \draw [fill=white](0,0) circle (2pt);
+    \draw[<->](0,.1)--node [fill=white]{$U$} (0,4-.1);
+            \node at (5.3, 3.5){$K$};
+        \end{circuitikz}
+    
+        \caption{}
+    \end{figure}	
+
+    \begin{solution}
+\begin{enumerate}
+    \item 电键$K$闭合前，电路中只有电阻$R_1$, 故总电阻
+\[R=R_1=10\Omega\]
+电键$K$闭合后，$R_1$与$R_2$并联，总电阻
+\[R'=\frac{R_1R_2}{R_1+R_2}=\frac{10\x 30}{10+30}=7.5\Omega\]
+\item 电键$K$闭合前，通过$R_1$的电流
+\[I_1=\frac{U_1}{R_1}=\frac{6}{10}=0.6{\rm A}\]
+通过$R_2$的电流$I_2=0$
+
+电键$K$闭合后，通过$R_1$的电流
+\[I'_1=\frac{U}{R_1}=\frac{6}{10}=0.6{\rm A}\]
+通过$R_2$的电流
+\[I'_2=\frac{U}{R_2}=\frac{6}{30}=0.2{\rm A}\]
+\item 电键$K$闭合前，$R_1$上消耗的功率
+\[P_1=I_1^2R_1=0.6^2\x10=3.6{\rm W}\]
+$R_2$上消耗的功率$P_2=0$.
+
+电键$K$闭合后，$R_1$上消耗的功率
+\[P_1'={I_1'}^2R_1=0.6^2x10=3.6{\rm W}\]
+$R_2$上消耗的功率 
+\[P_2'={I_1'}^2R_2=0.2^2\x30=1.2{\rm W}\]
+\end{enumerate}
+    \end{solution}
+	
+
+
+    \item 在图7.11所示的电路中，要使通过$R_1$的电流强度不超过5毫安，分流电阻$R_2$应为多大？
+
+    \begin{solution}
+因为$R_2$与$R_1$并联，所以
+\[U_2=U_1=I_1R_1=5\x10^{-3}\x100=0.5{\rm V}\]
+又因通过$R_2$的电流强度$I_2=I-I_1=3-5\x10^{-3}=3{\rm A}$
+故分流电阻
+\[R_2=\frac{U_2}{I_2}=\frac{0.5}{3}=0.167\Omega\]
+    \end{solution}
+
+    \begin{figure}[htp]
+        \centering
+        \begin{minipage}[t]{0.48\textwidth}
+        \centering
+                \begin{circuitikz}[european, >=latex, scale=.8]
+            \draw (0,0) -- (5,0) to [R=$R_1$] (5,4)--(0,4);
+            \draw (3,0) to [R=$R_2$, *-*] (3,4);
+            \draw [->] (.5,4)--(1.5,4)node [above]{3A};
+            \node at (6.2, 2.4) {5mA};
+            \node at (6.2, 1.6) {100$\Omega$};
+            \draw [fill=white](0,4) circle (2pt);
+            \draw [fill=white](0,0) circle (2pt);
+                \end{circuitikz}
+            
+                \caption{}
+                \end{minipage}
+        \begin{minipage}[t]{0.48\textwidth}
+        \centering
+            \begin{circuitikz}[european, >=latex, scale=.8]
+                \draw (0,0) -- (5,0) to [R=$R_2$] (5,4) to  [R=$R_1$]  (0,4);
+        \draw (5, 1)--(6,1)--(6,3)--(5,3);
+        \draw[<->](0,.1)--node [fill=white]{$U$} (0,4-.1);
+                \node at (6.3, 2){$L$};
+                \draw [fill=white](0,4) circle (2pt);
+                \draw [fill=white](0,0) circle (2pt);
+                \draw [fill=black](5,1) circle (2pt);
+                \draw [fill=black](5,3) circle (2pt);
+            \end{circuitikz}
+            \caption{}
+        \end{minipage}
+            \end{figure}
+
+    \item 在图7.12所示的电路中，$L$是跟$R_2$并联的一条导线，下列说法哪些是正确的？
+
+    
+    \begin{enumerate}
+        \item 通过$R_1$、$R_2$的电流强度$I$相等：
+        \[I=\frac{U}{R_1+R_2} \]
+        \item $R_1$上的电压$U_1=R_1I_1$，$R_2$上的电压$U_2=R_2I$，导线$L$中的电流为零．
+        \item $R_1$上的电压$U_1=U$，$R_2$上的电压为零．
+        \item $R_1$中的电流强度$I_1=U/R_1$，导线$L$中的电流强度等于$I_1$；$R_2$中的电流强度为零．
+\item $R_2$去掉后，电路中的电阻和电流强度不发生变化．
+    \end{enumerate}
+
+    \begin{solution}
+(c)、(d)、(e)是正确的。
+
+提示：导线$L$的电阻可忽略不计，即认为$R_L=0$.
+    \end{solution}
+\end{enumerate}
+
+
+
+\subsection{练习六}
+
+\begin{enumerate}
+    \item 有一个电流表，内阻为100欧，满度电流为3毫安，要把它改装成量程为3安的安培表，需并联多大的分流电阻？要把它改装为6伏的伏特表，需串联多大的电阻？
+
+    \begin{solution}
+在测量了安培的电流时，分流电阻$R$上通过的电流
+应该是
+\[I_R=I-I_g=3-3\x10^{-3}=2.997{\rm A}\]
+由于并联电路中电流强度跟电阻成反比
+\[I_gR_g=I_RR\]
+所以，需并联的分流电阻值
+\[R=\frac{I_g}{I_R}R_g=\frac{3\x10^{-3}}{2.997}\x100=0.1\Omega\]
+
+在测量6伏的电压时，分压电阻两端的电压应该是
+\[U_R=U-I_gR_g=6-3\x10^{-3}\x100=5.7{\rm V}\]
+所以，需串联的分压电阻值
+\[R=\frac{U_R}{I_g}=\frac{5.7}{3\x10^{-3}}=1.9\x10^3\Omega\]
+    \end{solution}
+    
+    \item 电流表的内阻为$R_g$，满度电流为$I_g$．试证明：
+     \begin{enumerate}
+         \item 要把它改装成量程为$U=nI_gR_g$的伏特表，串联电阻的阻值应为$R_{\text{串}}=(n-1)R_g$；
+         \item 要把它改装成量程为$I=nI_g$的安培表，并联电阻的阻值应为$R_{\text{并}}=R_g/(n-1)$．
+     \end{enumerate}
+
+     \begin{proof}
+\begin{enumerate}
+    \item 电流表改装为伏特表时，表头能承受的最大电压
+    为$U_g=I_gR_g$.
+
+    由于改装伏特表的量程为$U=nI_gR_g$, 故分压电阻应承受
+    的电压$U_R=U-U_g=(n-1)I_gR_g$.
+
+    根据串联电路的电压分配关系
+    \[\frac{U_g}{R_g}=\frac{U_R}{R_{\text{串}}}\]
+    得串联电阻的阻值
+\[R_{\text{串}}=\frac{U_R R_g}{U_g}=\frac{(n-1)I_gR_g}{I_gR_g}R_g=(n-1)R_g\]
+
+    \item 电流表改装为安培表时，表头能承受的最大电流
+    为$I_g$.
+
+    由于改装安培表的量程为$I=nI_g$, 故分流电阻应分担的
+    电流 $$I_{\text{并}}=I-I_g=(n-1)I_g$$.
+
+    根据并联电路的电流分配关系 $I_gR_g=I_R R_{\text{并}}$, 得并联电阻的阻值
+\[R_{\text{并}}=\frac{I_g}{I_R}R_g=\frac{I_g}{(n-1)I_g}R_g=\frac{1}{n-1}R_g\]
+\end{enumerate}
+     \end{proof}
+     
+     \item 在第1题中，改装后的安培表的量程比电流表原来的电流量程扩大的倍数$n$是多少？改装后的伏特表比电流表原来的电压量程扩大的倍数$n$又是多少？利用第2题中推出的两个公式，重新计算第1题中的并联电阻和串联电阻，比较两次计算的结果是否相同．
+
+     \begin{solution}
+        改装安培表的量程比电流表原来的电流量程扩大的倍数
+\[n=\frac{I}{I_g}=\frac{3}{3\x 10^{-3}}=1000\]
+
+改装伏特表的量程比电流表原来的量程扩大的倍数
+\[n=\frac{U}{U_g}=\frac{U}{I_gR_g}=\frac{6}{3\x 10^{-3}\x 100}=20\]
+由$R_{\text{并}}=\frac{1}{n-1}R_g$，得：
+\[R_{\text{并}}=\frac{1}{1000-1}\x 100=0.1\Omega\]
+由$R_{\text{串}}=(n-1)R_g$，得：
+\[R_{\text{串}}=(20-1)\x 100=1900\Omega=1.9{\rm k}\Omega\]
+计算结果均与第1题的计算结果相同。
+     \end{solution}
+     
+     \item 有一安培表，内阻为0.03欧，量程为3安，测量电阻$R$中的电流强度时，本应与$R$串联，如果不注意，错把安培表与$R$并联了（图7.13），将会产生什么后果？假设$R$两端的电压为3伏．
+     
+\begin{figure}[htp]\centering
+    \begin{circuitikz}[european]
+\draw (0,0)node[left]{$-$}--(4,0) to [R=$R$] (4,3)--(0,3) node[left]{$+$};
+\draw (2.5,0) to [rmeter, t=A, *-*] (2.5, 3);
+\draw [fill=white](0,0) circle (2pt);
+\draw [fill=white](0,3) circle (2pt);
+    \end{circuitikz}
+
+    \caption{}
+\end{figure}	
+
+     \begin{solution}
+因安培表与$R$并联，故
+安培表两端电压跟$R$两端电压
+相等，即 $U_A=U_R=3{\rm V}$
+
+这时通过安培表的电流强度
+\[I_A=\frac{U_A}{R_g}=\frac{3}{0.03}=100{\rm A}\]
+远大于安培表的满度电流3安，安培表将烧毁。
+     \end{solution}
+     
+\end{enumerate}
+
+
+
+\subsection{练习七}
+\begin{enumerate}
+    \item 图7.21是某电路中的一部分，$R_2$、$R_3$、$R_4$是三个电子管的灯丝电阻，阻值分别为$R_2=R_3=84$欧，$R_4=21$欧，分压电阻$R_1=31$欧，$AB$间的电压是28伏，求通过各电子管灯丝的电流强度．
+    \begin{figure}[htp]\centering
+        \begin{circuitikz}[european, thick]
+    \draw (-2,0) node[above]{$A$} to [R=$R_1$] (2,0) to [bulb=$R_2$] (4,0) to [bulb=$R_4$] (7,0) -- (8,0) node[above]{$B$};
+    
+    \draw (1.5,0)--(1.5,-2) to [bulb=$R_3$] (4.5,-2)--(4.5,0);
+    \draw [fill=white](-2,0) circle (2pt);
+    \draw [fill=white](8,0) circle (2pt);
+    \draw [fill=black](1.5,0) circle (2pt);
+    \draw [fill=black](4.5,0) circle (2pt);
+    \node at (-2-.3,0){$+$};
+    \node at (8+.3,0){$-$};
+        \end{circuitikz}
+        \caption{}
+    \end{figure}	
+
+
+    \begin{solution}
+电路的总电阻
+\[R=R_1+R_4+\frac{R_2}{2}=31+21+\frac{84}{2}=94\Omega\]
+通过$R_4$的电流强度即电路的总电流强度
+\[I=\frac{U_{AB}}{R}=\frac{28}{94}=0.30{\rm A}\]
+通过$R_2$和$R_3$的电流强度相等。
+\[I_2=I_3=\frac{1}{2}I=\frac{1}{2}\x 0.30=0.15{\rm A}\]
+    \end{solution}
+    
+    \item 图7.22中，电源电压为220伏，各段输电导线上的电阻$r$都为2欧，用电器$R_1$的电阻为200欧，$R_2$的电阻为196欧，$R_1$、$R_2$两端的电压各是多少？
+    \begin{figure}[htp]\centering
+        \begin{circuitikz}[european, >=latex]
+    \draw (0,0)--node [below]{$r$} (3,0)--node[below]{$r$}(5,0) to [R=$R_2$] (5,3)
+    --node[above]{$r$}(3,3) --node[above]{$r$}(0,3);
+            \draw (3,0) to [R=$R_1$, *-*] (3,3);
+    
+    
+    \draw [<->](0,0.1)--node [fill=white]{220V} (0,3-.1);
+    \draw [fill=white](0,0) circle (2pt);
+    \draw [fill=white](0,3) circle (2pt);
+    
+        \end{circuitikz}
+    
+        \caption{}
+    \end{figure}
+
+
+    \begin{solution}
+从图看出$R_2$与两个$r$串联后与$R_1$并联，再与两个$r$
+串联，最后接到220伏电源上，并联部分的电阻
+\[R_{\text{并}}=\frac{R_1(2r+R_2)}{R_1+2r+R_2}=\frac{200\x (2\x 2+196)}{200+2\x 2+196}=100\Omega\]
+电路的总电阻
+\[R=2r+R_{\text{并}}=2\x2+100=104\Omega\]
+电路的总电流强度
+\[I=\frac{U}{R}=\frac{220}{104}=2.12{\rm A}\]
+则用电器$R_1$两端的电压
+\[U_1=U_{\text{并}}=IR_{\text{并}}=2.12\x 100=212{\rm V}\]
+
+因通过$R_2$的电流强度
+\[I_2=\frac{U_{\text{并}}}{2r+R_2}=\frac{212}{2\x 2+196}=1.06{\rm A}\]
+故用电器$R_2$两端的电压
+\[U_2=I_2R_2=1.06\x196=208{\rm V}\]
+    \end{solution}
+    
+    \item 一个600欧的电阻和一个400欧的电阻串联后接在电压为90伏的电源上，用伏特表测得600欧电阻上的电压为45伏．
+    \begin{enumerate}
+        \item 伏特表接入电路后，600欧电阻上的电压改变了多少？
+        \item 这个伏特表的内阻是多少？
+    \end{enumerate}
+    
+\begin{solution}
+\begin{enumerate}
+    \item 在未接入伏特表时，电路的电流强度
+\[I=\frac{U}{R_1+R_2}=\frac{90}{600+400}=0.090{\rm A}\]
+    这时600欧电阻上的电压
+ \[   U_1=IR_1=0.090\x600= 54{\rm V}\]
+ 因伏特表接入电路后，$R_1$两端电压变为45伏，故600欧
+ 电阻上的电压改变为$54-45=9{\rm V}$。
+\item  伏特表接入电路后，600欧电阻上的电压之所以改变，
+ 是因为伏特表有内阻$R_V$, 它与$R_1$并联，
+ 因$U_{\text{并}}=45$伏，$U_2=U-U_{\text{并}}=90-45=45{\rm V}=U_{\text{并}}$，故
+ \[R_1=R_2=400\Omega\]
+由于
+\[\frac{1}{R_{\text{并}}}=\frac{1}{R_V}+\frac{1}{R_1}\]
+ 则伏特表内阻
+ \[R_V=\frac{R_{\text{并}}R_1}{R_1-R_{\text{并}}}=\frac{600\x 400}{600-400}=1.20\x 10^3\Omega\]
+\end{enumerate}
+\end{solution}
+
+    \item 在图7.16中滑动变阻器作分压器使用，负载电阻$R$一端接在变阻器的固定端$A$上，另一端接在滑动端$P$上，滑动端$P$在$AB$间移动时，$R$上就能得到不同的电压．
+    \begin{figure}[htp]\centering
+        \begin{circuitikz}[european,>=latex]
+    
+     \draw (0,0) to [R] (5,0) to [cute open switch] (6,0)--(7,0) ;      
+     \draw (0,0)--(0,-2);
+     \draw (7,0)--(7,-2);
+    
+     \draw [fill=white](0,-2) circle (2pt);
+     \draw [fill=white](7,-2) circle (2pt);
+     \draw [fill=black](0,0) circle (2pt);
+    
+    \draw (0,0) -- (0,1) to [R=$R$] (2.5,1); 
+    \draw [->](2.5,1)--node [right]{$P$} (2.5,.2);
+    \node at (2-.1,-.4){$A$};
+    \node at (3+.1,-.4){$B$};
+    \node at (5.5,-.4){$K$};
+    
+    
+    
+    \draw [<->](0+.1,-2)--node [fill=white]{$U$} (7-.1,-2);
+    
+    
+       \end{circuitikz}
+    
+        \caption{}
+    \end{figure}
+
+    \begin{enumerate}
+        \item 当滑动端从$A$向$B$移动时，$R$上的电压怎样变化？
+        \item 如果电压$U=6$伏，变阻器的电阻$R_{AB}=50$欧，负载电阻$R=100$欧，当滑动端$P$在$A$点、$R$点时，$R$上的电压各是多少？
+        \item 当$P$在$AB$中点时，$R$上的电压是否为3伏？通过变阻器各部分的电流是否相等？
+    \end{enumerate}
+    
+
+\begin{solution}
+    从图看出，$R$与$R_{AP}$并联后与$R_{PB}$串联。
+\begin{enumerate}
+    \item 由于
+    \[R_{\text{并}}=\frac{R\cdot R_{AP}}{R+R_{AP}}=\frac{R}{1+R/R_{AP}}\]
+    当$P$从$A$向$B$移动
+时$R_{AP}$由小变大，所以$R_{\text{并}}$也由小变大。又因$R_{\text{并}}$跟$R_{PB}$串
+联，根据串联电路中各电阻两端的电压跟它的阻值成正比，可
+知$U_{\text{并}}$（即$R$上的电压）将随$R_{\text{并}}$的变大而变大。
+\item 当滑动端$P$在$A$点时，$R$被导线短路，故$R$上的电压
+为零。
+
+当$P$在$B$点时，$R$与$R_{AB}$并联起来接到$U=6$伏的电源
+电压上，故$R$上电压为6伏．
+\item 当$P$在$AB$中点时，电器的总电阻
+\[R_{\text{总}}=\frac{RR_{AP}}{R+R_{AP}}+R_{PB}=\frac{100\x \frac{1}{2}\x 50}{100+\frac{1}{2}\x 50}+\frac{1}{2}\x 50=45\Omega\]
+$R$上的电压
+\[U_{\text{并}}=U-U_{PB}=U-\frac{U}{R_{\text{总}}}R_{PB} =6-\frac{6}{45}\x \frac{50}{2}=2.7{\rm V}\]
+\end{enumerate}
+
+因通过变阻器$PB$段的电流等于电路的总电流强度，而
+通过变阻器$AP$段的电流只是总电流的一部分，总电流的另
+一部分经$R$分流。所以$P$在$AB$中点时，通过变阻器各部分
+的电流不相等。
+\end{solution}
+
+\end{enumerate}
+
+
+
+\subsection{练习八}
+\begin{enumerate}
+    \item 电源的电动势为1.5伏，内电阻为0.12欧，外电路的电阻为1.28欧，求电路宁的电流强度．
+
+    \begin{solution}
+根据闭合电路欧姆定律$I=\dfrac{\mathcal{E}}{R+r}$，
+可求电路中电流
+强度
+\[I=\dfrac{\mathcal{E}}{R+r}=\frac{1.5}{1.28+0.12}=1.07{\rm A}\]
+    \end{solution}
+    
+    \item 把一个定值电阻和电源连成图7.17所示的电路，可以测得电源的内电阻，定值电阻$R$为10欧，合上开关$K$时，伏特表的读数为5.46伏，打开$K$时，伏特表的读数为6.0伏．求电源的内电阻为多少．
+\begin{figure}[htp]
+    \centering
+    \begin{circuitikz}[european]
+        \draw(0,0)--(5,0) to [R=$R$](5,3) to  [cute open switch] (2,3)--(0,3) to[battery2] (0,0);
+        \draw (2,0) to [rmeter, t=V, *-*] (2,3);    
+        \node at (7/2,3)[above] {$K$}    ;
+            \end{circuitikz}    
+    \caption{}
+\end{figure}
+
+    \begin{solution}
+因断开$K$时，伏特表
+的读数为电源电动势，故电源
+电动势$\mathcal{E}=6.0$伏．
+
+合上开关$K$时，伏特表的
+读数为定值电阻$R$两端的电压。由闭合电路欧姆定律$I=\dfrac{\mathcal{E}}{R+r}$
+和部分电路欧姆定律$U=IR$，有
+\[U=\frac{\mathcal{E}}{R+r}R\]
+则电源内电阻
+\[r=\frac{\mathcal{E}R}{U}-R=\frac{6.0\x 10}{5.46}-10=1\Omega\]
+    \end{solution}
+    
+    \item 在图7.18所示的电路中$\mathcal{E}=9.0$伏，$r=3.0$欧，$R=15$欧，当$K$闭合时，$U_{AB}$是多少？当$K$打开时，$U_{AB}$又为多少？
+
+    \begin{solution}
+        当$K$闭合时，电路的电流强度为
+\[I=\dfrac{\mathcal{E}}{R+r}=\frac{9.0}{15+3.0}=0.50{\rm A}\]
+则\[U_{AB}=IR=0.50\x 15=7.5{\rm V}\]
+当$K$断开时，$U_{AB}=\mathcal{E}=9.0{\rm V}$
+    \end{solution}
+
+    \begin{figure}[htp]\centering
+        \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \begin{circuitikz}[european, xscale=.8]
+        \draw(0,0) to [battery2] (6,0) node [below]{$B$} to[cute open switch] (6,2) to[R=$R$] (0,2)node [above]{$A$}--(0,0) ;
+        
+        \node at (6,1)[right]{$K$};
+        
+        \node at (3,-.5)[below]{$\mathcal{E}\;  r$};
+            \end{circuitikz}
+        
+            \caption{}
+        \end{minipage}
+    \begin{minipage}[t]{0.48\textwidth}
+    \centering
+            \begin{circuitikz}[european,>=latex, yscale=.8]
+        \draw (0,0)to [battery2] (6,0)--(6,2)to [rmeter, t=V, *-*] (0,2) to [rmeter, t=A] (0,0);
+        \draw (0,2)--(0,4)--(2,4) to [R] (4,4)--(4.5,4)to [cute open switch] (6,4)--(6,2);
+                \draw (1.5,4) to (1.5,4.7)--(3,4.7);
+                \draw [->](3,4.7)--(3,4.2);
+            \end{circuitikz}
+        
+            \caption{}\end{minipage}
+        \end{figure}    
+    
+    \item 利用图7.19所示的电路可以测出电源的电动势和内电阻．当变阻器的滑动端在某一位置时，安培表和伏特表的读数分别是0.20安和1.98伏，改变滑动端的位置后，两表的读数分别是0.40安和1.96伏，求电池的电动势和内电阻．
+
+    \begin{solution}
+        根据闭合电路的欧姆定律，可列出方程组
+\[\begin{split}
+    \mathcal{E}&=I_1R_1+I_1 r=U_1+I_1r\\
+    \mathcal{E}&=I_2R_2+I_2 r=U_2+I_2r\\
+\end{split}\]
+消去$\mathcal{E}$，可得
+\[U_1+I_1r=U_2+I_2r\]
+所以，电源的内电阻
+\[r=\frac{U_1-U_2}{I_2-I_1}=\frac{1.98-1.96}{0.40-0.20}=0.1\Omega\]
+把$r$的值代入$\mathcal{E}=U_1+I_1r$中，可求得电源电动势
+\[\mathcal{E}=1.98+0.20\x 0.1=2.00{\rm V}\]
+    \end{solution}
+    
+\end{enumerate}
+
+
+\subsection{练习九}
+
+\begin{enumerate}
+    \item 试分析说明：外电路中的电阻发生变化时为什么会影响路端电压的变化．
+
+    \begin{solution}
+根据闭合电路欧姆定律$I=\dfrac{\mathcal{E}}{R+r}$
+可知，就某个电源
+来说，由于电动势$\mathcal{E}$和内电阻$r$都是一定的，因此外电路电阻
+$R$发生变化时电路的电流强度$I$将发生变化。而路端电压$U=\mathcal{E}-Ir$, 所以当$R$变化导致$I$变化时，$U$必然变化．
+    \end{solution}
+    
+    \item 在两个电路中，电源的电动势相同，但内电阻不同，当它们的外电路中流过的电流相同时，哪个电路的路端电压大？
+
+    \begin{solution}
+        由路端电压$U=\mathcal{E}-Ir$可知，若两个电路的$\mathcal{E}$相同、$I$
+        相同时，内电阻$r$小的电路路端电压较大。
+    \end{solution}
+    
+    \item 在图7.32所示的电路中，当$P$由左向右滑动时，安培表和伏特表的读数怎样变化？$P$的位置在何处，伏特表的
+指示更接近于电源的电动势？
+
+\begin{figure}[htp]\centering
+    \begin{circuitikz}[>=latex, european]
+\draw (0,0) to [battery2] (6,0)--(6,1) to [rmeter, t=V, *-*] (0,1)--(0,0);
+\draw (0,1)--(0,2) to [rmeter, t=A] (2,2) to[R] (6,2)--(6,1);
+\draw (6,2)--(6,3)--(4,3);
+\draw [->](4,3)--node [left]{$P$}(4,2.2);
+\fill [white] (6-.02,2.2) rectangle (4.58,1.8);
+    \end{circuitikz}
+    \caption{}
+\end{figure}
+
+
+\begin{solution}
+    当$P$由左向右滑动时，电路中的电阻$R$变大，由$I=\dfrac{\mathcal{E}}{R+r}$
+    可知，安培表的读数即电路中的电流强度将变小；由$U=\mathcal{E}-Ir$可知，伏特表的读数即路端电压将变大。因$R$越大，
+    $I$越小，$U$就越大，也就越接近电源电动势；所以当$P$在最右
+    端时，$R$值最大，伏特表的示数更接近于电源电动势。
+\end{solution}
+
+\item 发电机的电动势为240伏，内电阻为0.40欧，给200盏电阻均为1210欧的电灯供电，电灯上的电压是多大？如果
+再接入100盏同样的电灯，电灯上的电压又是多大？利用所得的结果说明：电路中的用电器增多时，加在用电器上的电压将
+怎样变化？
+
+\begin{solution}
+给200盏相同电灯供电时，外电路总电阻
+\[R=\frac{1210}{200}=6.05\Omega\]
+这时电路中总电流强度
+\[I=\dfrac{\mathcal{E}}{R+r}=\frac{240}{6.05+0.40}=37.2{\rm A}\]
+则电灯上的电压
+\[U=\mathcal{E}-Ir=240-37.2\x0.40=225{\rm V}\]
+如再接入100盏同样的电灯，外电路总电阻
+\[R'=\frac{1210}{300}=4.03\Omega\]
+同理可求这时电灯上的电压
+\[U'=\mathcal{E}-I'r=\mathcal{E}-\frac{\mathcal{E}}{R'+r}r=240-
+\frac{240}{4.03+0.40}\x 0.40=218{\rm V}\]
+从计算结果可以看出：电路中用电器增多时，加在用电器
+上的电压将减小。
+\end{solution}
+
+\end{enumerate}
+
+
+
+
+\subsection{练习十}
+\begin{enumerate}
+    \item 每个铅蓄电池的电动势为2.0伏，想用它们给一个额定电压为6伏的用电器供电，应该怎么办？
+
+    \begin{solution}
+由于用电器的额定电压高于单个电池的电动势，可采用串联电池组供电。
+
+依题意蓄电池内阻不计，有$U=\mathcal{E}_{\text{串}}=n\mathcal{E}$,
+故
+\[n=\frac{U}{\mathcal{E}}=\frac{6}{2.0}=3\]
+应当用3个2.0伏的蓄电池串联起来供电。
+    \end{solution}
+    
+    \item 每节干电池的电动势为1.5伏，允许通过的最大电流为0.05安．现在需要一个电动势为6伏，最大电流为0.1安的电源，应该怎么办？
+
+    \begin{solution}
+因所需总电动势大于单个电池电动势，应采用串联
+电池组．需由$p$个电池串联而成，$\mathcal{E}_{\text{串}}=p\mathcal{E}$.
+则
+\[p=\frac{\mathcal{E}_{\text{串}}}{\mathcal{E}}=\frac{6}{1.5}=4\]
+又因所需电流大于单个电池允许通过的最大电流，应把
+几个跟上述串联电池组相同的电池组并联起来组成混联电池
+组。设需由$q$个串联电池组并联而成，$I_{\text{总}}=qI$.
+则
+\[q=\frac{I_{\text{总}}}{I}=\frac{0.1}{0.05}=2\]
+所需电池总数 $m=pq=4\x2=8$
+
+要实现题目提出的要求，可用8节干电池，每4节串联成
+一组，再将两组并联起来供电。
+    \end{solution}
+    
+    \item 有10个相同的蓄电池，每个蓄电池的电动势为2.0伏，内电阻为0.04欧，把这些蓄电池接成串联电池组，外接它阻为3.6欧．求电路中的电流强度和电池组两端的电压．
+
+    \begin{solution}
+因$\mathcal{E}_{\text{串}}=n\mathcal{E}$, $r_{\text{串}}=nr$, 由闭合电路欧姆定律得
+\[I=\frac{\mathcal{E}_{\text{串}}}{R+r_{\text{串}}}=\frac{n\mathcal{E}}{R+nr}=\frac{10\x 2.0}{3.6+10\x 0.04}=5.0{\rm A}\]
+电池组两端电压
+\[U=\mathcal{E}_{\text{串}}-Ir_{\text{串}}=n\mathcal{E}-Inr=10\x 2.0-5.0\x 10\x 0.04=18{\rm V}\]
+    \end{solution}
+    
+    \item 找一个半导体收音机，打开看看里面有几节干电池，是怎样连接的，算一算这个收音机的电源电压是多少．
+
+    \begin{solution}
+        一般半导体收音机的电源是由4节1.5伏的干电池
+        串联而成．电源电压为$n\mathcal{E}=4\x1.5=6{\rm V}$
+
+        注意：此题答案不是唯一的，例如有不少半导体收音机的电源是由3节干电池串联而成。
+    \end{solution}
+    
+    \item 把两节干电池串联起来组成电池组，用伏特表量出电池组的电动势．再把三个小灯泡照图7.21依次连入电路中，注意每增加一个小灯泡时伏特表读数的变化，说明伏特表的读数为什么会发生变化．这个变化表明了什么？
+
+    \begin{figure}[htp]\centering
+        \begin{circuitikz}[european]
+    %\draw (0,3)--(6,3) to[lamp] (6,0)--(0,0) to [battery](0,3);
+    \draw (0,0)--(6,0) to [lamp] (6,3)--(0,3) to [battery](0,0);
+    
+    \draw (1.5,0) to [rmeter,t=V, *-*] (1.5,3);
+    \draw (4,0) to [lamp, *-*] (4,3);
+    \draw (5,0) to [lamp, *-*] (5,3);
+    
+        \end{circuitikz}
+    
+        \caption{}
+    \end{figure}
+
+    \begin{solution}
+        每增加一个灯泡，伏特表的读数就减小一次。因为电
+        池组的总电动势和总内阻保持不变，当电源的并联负载不断
+        增加时，外电路的总电阻将不断减小，电路的电流强度
+$I=\dfrac{\mathcal{E}_{\text{总}}}{R+r_{\text{总}}}$
+        将不断增大，导致伏特表的读数（即路端电压）$U=\mathcal{E}_{\text{总}}-Ir_{\text{总}}$不断减小。这个变化表明电路的路端电压随外电阻
+        减小而减小。
+    \end{solution}
+    
+\end{enumerate}
+
+
+
+
+
+
+\subsection{练习十一}
+\begin{enumerate}
+    \item 在课本图7.37甲中，如果安培表的读数是0.2安，伏特表的读数是30伏，根据这些数据算出的$R$的阻值是多大？如果已知伏特表的内阻是3千欧，那么，$R$的真实值是多大？采用这种接法时，算出的$R$值比真实值大还是小？
+
+    \begin{solution}
+        $R$的计算值
+        \[R'=\frac{U}{I}=\frac{30}{0.2}=150\Omega\]
+        如考虑伏特表的内阻，则伏特表与$R$并联的等效电阻值
+\[R_{\text{并}}=\frac{U}{I}=\frac{30}{0.2}=150\Omega\]
+因为$R_{\text{并}}=\dfrac{R_VR}{R_V+R}$，所以，$R$的真实值
+\[R=\frac{R_VR_{\text{并}}}{R_V-R_{\text{并}}}=\frac{3000\x 150}{3000-150}=158\Omega\]
+可见算出的$R$值比真实值小。
+    \end{solution}
+    
+    \item 在课本图7.37乙中，如果伏特表的读数是5伏，安培表的读数是0.5安，根据这些数据算出的$R$的阻值是多大？如果已知安培表的内阻是0.2欧，那么，$R$的真实值是多大？采用这种接法时，算出的$R$值比真实值大还是小？
+
+    \begin{solution}
+$R$的计算值
+\[R'=\frac{U}{I}=\frac{5}{0.5}=10\Omega\]
+如考虑安培表的内阻，则安培表与R串联的等效电阻值
+\[R_{\text{串}}=\frac{U}{I}=\frac{5}{0.5}=10\Omega\]
+因为$R_{\text{串}}=R+R_A$, 
+所以，$R$的真实值
+\[R=R_{\text{串}}-R_A=10-0.2=9.8\Omega\]
+可见算出的$R$值比真实值大。
+    \end{solution}
+    
+    \item 已知伏特表的内阻为5千欧，安培表的内阻为0.2欧，如果用它们来测量一个线圈的电阻，估计这个线图的电阻大约为几个欧姆，那么，怎样连接电路测得的结果误差较小？画出电路图．
+
+    \begin{solution}
+        从题目已知条件可以看出待测电阻的阻值远小于伏
+        特表的内阻，所以采用安培表外接的方式测得结果误差较小。
+        如图7.22所示．
+\begin{figure}[htp]\centering
+    \begin{circuitikz}[european, scale=.8]
+\draw (0,0) to [rmeter, t=A] (2,0) to (2.5,0) to [R=$R$, *-*] (5,0)--(6,0);
+\draw (2.5,0)--(2.5,1.5) to [rmeter, t=V] (5,1.5)--(5,0);
+    \end{circuitikz}
+    \caption{}
+\end{figure}
+
+    \end{solution}
+    
+    \item 在课本图7.40中，$R$为15欧，电桥平衡时，$\ell_1$为0.45米，$\ell_2$为0.55米，求待测电阻$R_x$．
+
+    \begin{solution}
+        因电桥平测时有
+\[\frac{R_x}{R}=\frac{\ell_2}{\ell_1}\]
+        所以，待测电阻$R_x$的值
+\[R_x=\frac{\ell_2}{\ell_1}R=\frac{0.55}{0.45}\x 15=18\Omega\]
+    \end{solution}
+    
+    \item 在课本图7.40中，如果$AB$支路发生断路，当滑动触头
+    $D$从$A$移向$C$时，电流表$G$中的电流如何变化？如果$BC$支路发生断路，当$D$从$A$移向$C$时，电流表$G$中的电流又如何变化？
+
+    \begin{solution}
+        可以认为$A$、$C$间电压保持不变。设电阻线$AD$段
+        电阻值为$R_1$, $DC$段电阻值为$R_2$.
+
+        当$AB$支路断路时，$R_{DC}=\dfrac{(R_x+R_g)R_2}{R_x+R_gR_2}$
+        与$R_1$串联，随滑动
+        触头$D$从$A$移向$C$, $R_1$增大，$R_2$减小使$R_{DC}$减小．根据串联
+        电路中各电阻两端电压跟它的阻值成正比，$R_{DC}$两端的电压
+$U_{DC}$将减小，导致电流表G中电流$I=\dfrac{U_{DC}}{R_x+R_g}$
+减小。
+
+当$BC$支路断路时，$R_{AD}=\dfrac{(R+R_g)R_1}{R+R_g+R_1}$
+与$R_2$串联，随滑
+动触头$D$从$A$移向$C$, $R_2$减小，$R_1$增大使$R_{AD}$增大，根据串
+联电路中各电阻两端电压跟它的阻值成正比，$R_{AD}$两端的电
+压$U_{AD}$将增大，导致电流表G中电流$I=\dfrac{U_{AD}}{R+R_g}$增大。
+    \end{solution}
+    
+\end{enumerate}
+
+
+
+
+
+
+\subsection{习题}
+
+        \begin{figure}[htp]
+            \centering
+            \begin{minipage}[t]{0.48\textwidth}
+            \centering
+            \begin{circuitikz}[european, scale=.7, >=stealth]
+        
+                \draw (0,0) --(4,0) to [R=$R$] (4,5)--(3,5); 
+            \draw(1,5)--(0,5)to [battery2] (0,0);
+        \draw (2,0) to [C=$C$, *-] (2,4);
+        \node at (2,-.5){$b$};
+        \draw [ultra thick ] (2,5.25)--(2,4);
+        \draw [->] (2,5.25) arc (90:60:1.5);
+        \draw [->] (2,5.25) arc (90:120:1.5);
+        
+        
+        \draw (2,4) [fill=white] circle (1.5pt)node[left]{$a$};
+        \draw (1,5) [fill=white] circle (1.5pt)node[above]{1};
+        \draw (3,5) [fill=white] circle (1.5pt)node[above]{2};\draw (2,5.25) [fill=white] circle (1.5pt);
+        
+                \end{circuitikz}
+            \caption{}
+            \end{minipage}
+            \begin{minipage}[t]{0.48\textwidth}
+            \centering
+            \begin{circuitikz}[european, scale=1.5]
+    
+                \draw (0,0) --(1,0) to [rmeter, t=mA] (2,0); 
+                \draw [dashed](2,0)--(3,0)--node[right]{$B$}(3,2)--(2,2);
+                \draw (0.8,0) to [rmeter, t=V, *-*] (.8,2); 
+            \draw(2,0)--node[right]{$E$}(2,2)--(0,2)to [battery] (0,0);
+            \node at (-.5,1){$A$};
+                \end{circuitikz}
+            \caption{}
+            \end{minipage}
+            \end{figure}
+
+
+
+\begin{enumerate}
+    \item 在图7.23中，电键可以向左扳将$a$与1接通，也可以向右扳将$a$与2接通，电键接通1的瞬间，电流的方向怎样？
+接通1后再向右扳电键，将$a$与2接通，接通2的瞬间，电流的方向又怎样？
+
+\begin{solution}
+    电键$K$接通1的瞬间，电源给电容器$C$充电．充电
+    电流的方向从电源正极流出，负极流入．电键接通1后再接
+    通2的瞬间，已充电的电容器$C$通过电阻$R$放电。放电电流
+    的方向从$C$的上极板流出经$R$流入$C$的下极板。
+\end{solution}
+
+\item $A$和$B$两地相距40千米，从$A$到$B$的两条输电线的总电阻为800欧，如果在$A$、$B$之间的某处$E$两条电线发生短路（图7.24），可用伏特表、毫安表和电池组检查出发生短路的地点．如果在$A$处测得伏特表的读数是10伏，毫安表的读数是40毫安，求短路处$E$到$A$的距离．
+
+\begin{solution}
+    从$A$到$E$的两条输电线的电阻为
+\[R=\frac{U}{I}=\frac{10}{40\x 10^{-3}}=250\Omega\]
+因为$\dfrac{AE}{AB}=\dfrac{R}{800\Omega}$，所以，短路处$E$到$A$的距离
+\[AE=\frac{R}{800\Omega}AB=\frac{250}{800}\x 40=12.5{\rm km}\]
+\end{solution}
+
+\item 有两个灯泡，一个是110伏、100瓦，一个是110伏、
+40瓦，把它们串联后接入220伏的电路中使用行不行？为什么？有一个变阻器，把它怎样连入电路中可以使两灯泡正常发光？这时变阻器的阻值应调至多大？
+
+\begin{solution}
+110伏、100瓦灯泡的电阻
+\[R_1=\frac{U^2}{P_1}=\frac{110^2}{100}=121\Omega\]
+110伏、40瓦灯泡的电阻
+\[R_2=\frac{U^2}{P_2}=\frac{110^2}{40}=303\Omega\]
+由于$R_2>R_1$, 它们串联起来接入220伏电路中使用时，
+$U_2$将大于$U_1$, 
+\[U_2=\frac{R_2}{R_1+R_2}U=\frac{303}{121+303}\x 220=157{\rm V}\]
+可见，40瓦灯泡实际承担的电压已大于自身的额定电压，会
+被烧毁，所以这样连接不行。
+
+如要使两灯串联后又都能正常发光，可将变阻器与40瓦
+灯泡并联，使它们的等效电阻与100瓦灯泡的电阻相等。这
+样，两灯各分担110伏电压，均等于各自的额定电压．设这时
+变阻器的阻值为$R$, 则有
+\[R_1=R_{\text{并}}=\frac{R_2R}{R_2+R}\]
+所以，变阻器的阻值应调到
+\[R=\frac{R_1R_2}{R_2-R_1}=\frac{121\x 303}{303-121}=201\Omega\]
+\end{solution}
+
+\item 有一用电器$W$，额定电压为100伏，额定功率为150瓦，用120伏的电源供电．为了使用电器能正常工作，用一
+电阻为210欧的变阻器进行分压（图7.25）．$R_1$、$R_2$为多大时，用电器才能正常工作？
+
+\begin{solution}
+先求出用电器$W$的电阻值。
+\[R_W=\frac{U^2_W}{P_W}=\frac{100^2}{150}=66.7\Omega\]
+因为$R_2$与$R$并联后再与$R_1$串联，根据
+串联电路的电压分配关系可得：
+\[U_1:U_W = R_1:\frac{R_WR_2}{R_W+R_2}\]
+把$R_1=R-R_2$和$U_1=U-U_W$代入上式，整理后得
+\[R_2^2+\left(\frac{U}{U_m}R_W-R\right)R_2-RR_W=0\]
+将$U=120$伏，$U_m=100$伏，$R_W=66.7$欧，$R=210$欧代入上式
+得
+\[R_2^2-130\cdot R_2-14000=0\]
+解方程（舍去负根）得$R_2=200$欧，$R_1=210-200=10$欧．
+
+\end{solution}
+
+\begin{figure}[htp]
+	\centering
+	\begin{minipage}[t]{0.48\textwidth}
+	\centering
+	\begin{circuitikz}[european, scale=1.3, >=stealth]
+		\draw [->](0,0)--(2,0)--(3,0)to [R=$W$](3,2)--(2.15,2);
+		\draw (2,0)--(2,1) to [R] (2,3)--(0,3);
+		
+		\draw[<->] (0,.05)--node[fill=white]{$U$}(0,3-.05);
+		\draw (2,0) [fill=black] circle (1.2pt);
+		\draw (0,0) [fill=white] circle (1.2pt);
+		\draw (0,3) [fill=white] circle (1.2pt);
+		\node at (1.5,1.5){$R_2$};\node at (1.5,2.5) {$R_1$};
+			\end{circuitikz}	\caption{}
+	\end{minipage}
+	\begin{minipage}[t]{0.48\textwidth}
+	\centering
+	\begin{circuitikz}[european, scale=1, >=stealth]
+		\draw (-2,0) to [R=$R_1$, *-*] (0,0) to  [R=$R_2$, *-*] (2,0);
+		\draw (-2,-1.5)--(-2,1.5) to [rmeter, t=G] (2,1.5)--(2,-1.5);
+		\draw (0,0)--(0,-1.5);
+		\draw (0,-1.5) [fill=white] circle (1.5pt) node[right]{$b$};
+		\draw (-2,-1.5) [fill=white] circle (1.5pt)node[right]{$a$};
+		\draw (2,-1.5) [fill=white] circle (1.5pt)node[right]{$c$};
+		\node at (0,-1.5)[below]{1A}; \node at (0,1.1)[below]{$R_3$};
+		\node at (2,-1.5)[below]{0.1A};
+		\draw [dashed](2.5,2.2) rectangle (-2.5, -1);
+		
+			\end{circuitikz}
+	\caption{}
+	\end{minipage}
+	\end{figure}
+
+\item 图7.26所示的是有两个量程的安培表，当使用$a$、$b$两端点时，量程为1安，当使用$a$、$c$两端点时，量程为0.1安．已知电流表的内阻$R_g$为200欧，满度电流$I_g$为2毫安，求电阻$R_1$和$R_2$．
+
+
+    \begin{solution}
+当使用$a$、$b$两端点时，$R_g$与$R_2$串联后与$R_1$并联，
+则有
+\[I_g(R_g+R_2)=(I-I_g)R_1\]
+当使用$a$、$c$两端点时，$R_1$与$R_2$串联后与$R_g$并联，则有
+\[I_gR_g=(I'-I_g)(R_1+R_2)\]
+代入题设数据得
+\[\begin{cases}
+    2\x10^{-3}\x(200+R_2)=(1-2\x10^{-3})\x R_1\\
+2\x10^{-3}\x200=(0.1-2\x10^{-3})\x(R_1+R_2)
+\end{cases}\]
+化简后有
+\[\begin{cases}
+   200+R_2=499R_1\\
+200=49\x(R_1+R_2) 
+\end{cases}\]
+
+上述二式联立求解可得：$R_1=0.41$欧，$R_2=3.67$欧．
+    \end{solution}
+    
+\item 在课本图7.27中，不用安培表，改用伏特表能不能测出电源的电动势和内电阻？画出伏特表应怎祥接入电路，说明要取得哪些数据，写出计算电动势和内电阻的公式．
+
+\begin{solution}
+    不用安培表，改用伏特表能够测出电源电动势和内
+    电阻．电路图如图7.27所示．
+
+    将开关先后扳到位置1和位置2, 分别测出$R_1$和$R_2$接
+    入电路时的伏特表读数$U_1$和$U_2$. 计算电动势和内电阻的公
+    式可根据闭合电路欧姆定律列出方程组
+\[\begin{cases}
+    \mathcal{E}=U_1+\dfrac{U_1}{R_1}r\\
+    \mathcal{E}=U_2+\dfrac{U_2}{R_2}r\\
+\end{cases}\]
+联立求解得出：
+\[\mathcal{E}=\frac{U_1U_2(R_1-R_2)}{U_2R_1-U_1R_2},\qquad r=\frac{(U_1-U_2)R_1R_2}{U_2R_1-U_1R_2}\]
+\end{solution}
+
+\begin{figure}[htp]\centering
+    \begin{minipage}[t]{0.48\textwidth}
+    \centering
+\begin{circuitikz}[european]
+
+    \draw (.5,2.5)--(0,2.5)--(0,0) to [battery2] (5,0)--(5,3);
+\draw(0,1) to [rmeter, t=V, *-*] (5,1);
+\draw(1.5,3) to [R=$R_1$] (5,3);
+\draw(1.5,2) to [R=$R_2$] (5,2);
+
+\draw[thick](.5,2.5)node[below]{$K$}--(1.5,2.9);
+\draw(1.5,3) [fill=white]circle(1.5pt)node[above]{$1$};
+\draw(1.5,2) [fill=white]circle(1.5pt)node[below]{$2$};
+\draw(.5,2.5) [fill=white]circle(1.5pt);
+\node at (2.2,0)[below]{$\mathcal{E}$};
+\node at (2.8,0)[below]{$r$};
+    \end{circuitikz}
+    \caption{}
+    \end{minipage}
+    \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \begin{circuitikz}[european, xscale=.8]
+\draw (0,0)--(8,0) to [lamp] (8,3)--(3,3) to [R=$R$] (0,3) to (0,0);
+\draw (3,0)--(3,3);
+\draw (5,0)to [lamp] (5,3);
+\draw [dashed](6.5,0)to [lamp] (6.5,3);        
+\draw (0,1.5) node[elmech]{$F$};
+\draw (3,1.5) node[elmech]{$M$};
+\node at (1,1.5){$\mathcal{E},\; r$};
+\draw [fill=black](3,3) circle (2pt);
+\draw [fill=black](5,3) circle (2pt);
+\draw [fill=black](6.5,3) circle (2pt);
+\draw [fill=black](3,0) circle (2pt);
+\draw [fill=black](6.5,0) circle (2pt);
+\draw [fill=black](5,0) circle (2pt);
+    \end{circuitikz}
+    \caption{}
+    \end{minipage}
+    \end{figure}
+
+
+\item 在图7.28中，用一台直流发电机$F$给一台电动机$M$和一些电灯供电．已知发电机的电动势$\mathcal{E}=240$伏，内电阻$r=1$欧，输电线的总电阻$R=3$欧，电动机的工作电流为3安，供给电灯的总电流为9安，求电灯和电动机两端的电压．
+
+\begin{solution}
+电路的总电流强度
+\[I=I_M+I_{\text{灯}}=3+9=12{\rm A}\]
+路端电压
+\[U=\mathcal{E}-Ir=240-12\x1=228{\rm V}\]
+则电灯和电动机两端的电压
+\[U'=U-U_R=U-IR=228-12\x3=192{\rm V}\]
+\end{solution}
+
+
+\item 现有电动势为1.5伏，内电阻为1欧的电池若干，每个电池允许输出的电流为0.05安，又有不同阻值的电阻可作为分压电阻，试设计一种电路，使额定电压为6伏、额定电流为0.1安的用电器正常工作，画出电路图，并标明分压电阻的值．
+
+\begin{solution}
+    按题意要使用电器正常工作，应采用混联电池组，设
+    它由$p$个电池串联为一组，$q$组并联而成。
+
+    要使用电器两端的电压等于额定电压6伏，必须让每组
+    串联电池输出的电压$U$满足以下关系：
+\[U=p\mathcal{E}-0.05\x pr\ge 6\]
+即：\[p\x 1.5-0.05\x r\ge 6\]
+则$p$至少要取5。
+
+要使用电器通过的电流等
+于额定电流，又不致损坏电池，应满足$0.1=q\x0.05$，则$q=2$。
+
+因此，需将5只电池串联成一组，再将两组并联使用．这
+种混联电池组的电动势$\mathcal{E}_{\text{总}}=7.5$伏，内阻
+\[r_{\text{总}}=\frac{5\x 1}{2}=2.5\Omega\]
+
+因电池组的输出电压
+\[U=5\x1.5-0.05\x5\x1=7.25{\rm V}\]
+大于用电器的额定电压，故应给用电器串联一个分压电阻$R$. 
+
+由于$\mathcal{E}_{\text{总}}=Ir_{\text{总}}+IR+U_{\text{额}}$，
+式中的$U_{\text{额}}=6$伏，是用电器的额定电压，所以分压电阻
+\[R=\frac{\mathcal{E}_{\text{总}}-Ir_{\text{总}}-U_{\text{额}}}{I}=\frac{7.5-0.1\x 2.5-6}{0.1}=12.5\Omega\]
+整个电路如图7.29所示．
+
+\begin{figure}[htp]
+    \centering
+\begin{circuitikz}[european,scale=.8]
+\draw (0,4)--(0,0) to [R](3,0) to [R](5,0)--(5,4);
+\draw(0,4) to [battery] (5,4);
+\draw(0,2) to [battery, *-*] (5,2);
+\node at (1.5,-.3)[below]{$R=12.5\Omega$};
+\node at (4,-.3)[below]{用电器};
+
+\end{circuitikz}
+    \caption{}
+\end{figure}
+
+\end{solution}
+
+\item 用伏安法测电阻，如果所用的安培表的内阻$R_A=0.1$
+欧，伏特表的内阻$R_V=1000$欧，那么，用课本图7.37所示的两种不同接法测量$R=1$欧的电阻时，哪种方法产生的误差较小？测量$R=500$欧的电阻时，哪种方法产生的误差较小？测量较小的电阻和较大的电阻，各应采用什么方法？
+
+\begin{solution}
+    由题设条件可看出：测量$R=1$欧的电阻时，$R\ll R_V$,
+    采用课本图7.37甲的接法产生的误差较小；测量$R=500$欧
+    的电阻时，$R\gg R_V$, 采用课本图7.37乙的接法产生的误差较
+    小．测量较小的电阻应采用课本图7.37甲所示的安培表外
+    接法，测量较大电阻应采用课本图7.37乙所示的安培表内
+    接法。
+\end{solution}
+
+\item 在课本图7.40中，滑动触头$D$从$A$向$C$移动时，电流
+表中都有电流通过，但电流强度逐渐减小，这时可能是什么地方发生了断路？如果电流表指示的电流强度逐渐增大，又可能是什么地方发生了断路？
+
+\begin{solution}
+    电流表示数逐渐减小，可能$AB$支路发生断路；电流
+    表示数逐渐增大，可能$BC$支路发生断路。（具体分析过程可
+    参考练习十一第5题的解答）
+\end{solution}
+
+\item 在课本图7.40中，无论在从$A$经电源到$C$的电路中发
+生断路，还是从$B$经电流表到$D$的电路中发生断路，在按下滑动触头时都没有电流通过电流表．用什么办法可以把这两种情况区别开来？
+
+\begin{solution}
+    可将滑动触头$D$处接线断开，然后把$D$处与电流表相
+    连的接线线端跟电源正、负极瞬时接触。如果电流表都不偏
+    转，说明$B$经电流表到$D$的电路发生了断路；如接触电源正极时，电流表偏转，说明从$A$到电源正极的电路发生了断路；如
+    接触电源负极时电流表偏转，说明从电源负极到$C$的电路发
+    生了断路。
+\end{solution}
+
+\end{enumerate}
+
+
+
+\section{参考资料}
+\subsection{超导电现象}
+1911年荷兰科学家昂尼斯发现，水银的电阻率并不象预
+料的那样随温度降低逐渐减小，而是在绝对温度4.15K附近
+突然减小到测不出来。现在用最精确的方法估计，其电阻率
+小于$10^{-25}$欧·米，而良导体之一的铜，即使是最纯的铜，在温
+度为4.15K时的电阻率也有$10^{-11}$欧·米，因此，完全可以认为
+在4.15K附近水银的电阻已趋消失．某些金属、合金和化合
+物，在温度降到绝对零度附近某一特定温度时，它们的电阻率
+会突然减小到无法测量的现象叫超导现象，处于这种状态的
+导体叫超导体，每一种超导物质都在特定的温度下转变为超
+导体。这个温度$T_c$, 叫转变温度。现已发现大多数金属元素
+（除铁、镍、钴、铜、银、金等之外）以及数以千计的合金、化合物
+都能在不同条件下显示出超导性。如钨的转变温度为0.012K,
+锌为0.75K, 铝为1.196K, 锡为3.722K, 铅为7.193K, 银为
+9.25K, 铌三锗为23K.
+
+超导体的电阻是怎样消失的？从微观上回答这一问题，花
+费了固体物理学家们近半个世纪的心血，直到1957年才由巴
+丁、库伯、施里弗在前人的基础上建立了通称为BCS理论的
+超导性理论．为此，他们荣获1972年诺贝尔物理学奖。
+
+如果用超导材料做成一个闭合回路，那么在这个回路里
+电流一经激发就可以无需电源持续几个星期之久而不减弱，
+并且也不会象在具有电阻的普通导体回路中那样发热。
+
+我们知道，在大的电磁铁或电机中，通过线圈的电流很
+强，为了避免产生过多的热量，线圈就必须用较粗的导线绕或
+采取冷却措施。这就使电磁铁和电机既笨重耗电又多。如果
+用超导体作线圈，就可以避免这种缺点。现在用超导体产生
+强磁场和制造电机方面的研究工作已获得较大的进展。
+
+例如，使用超导发电机能将通常发电机的单机输出率极
+限从200千瓦提高5—10倍．目前，数千千瓦的超导发电机
+已安全运行，数万千瓦的试验超导发电机正在研制中。
+
+超导电缆的研究和应用，近年来也有很大进展。超导电缆
+埋在地下，损耗也小，有利于节约能量，保护环境和节约土地。
+
+超导现象在高能物理领域也有重要应用。用超导线圈制
+成电磁铁能产生强大的磁场，对于核聚变时约束等离子体
+和粒子加速器实验装置都有很大用处。
+
+阻碍超导现象大规模应用的主要问题是它要求低温。假
+如找到能在液氮（沸点为77K)工作的超导材料，就可以用液
+氮作致冷剂，则可能会使电力工业乃至整个工业发展发生巨
+大的变化．1986年底，我国的物理工作者发现了一种转变
+温度达48.6K的镧钡铜氧化物，已引起了国际学术界的注意．
+
+\subsection{非纯电阻电路中的电功和电热}
+在非纯电阻电路中，为什么要分别用$UIt$和$I^2Rt$来计算
+电功和电热呢？根本原因在于欧姆定律只适用于不存在电动
+势的一段电路，即只适用于仅有静电力做功的一段电路。在
+一段含有电动势的电路中，除了静电力外，还有非静电力，欧
+姆定律$U=IR$就不适用了，因此就不能用$UIt$推出$I^2Rt$和
+$U^2t/R$
+来。这时静电力移动电荷运动的过程中还需反抗非静电
+力作功，把电能的一部分转化为其他形式的能。
+
+\subsection{电源电动势}
+电源的作用在于维持电源两极$A,B$之间的电压恒定不
+变．当外电路接有电阻$R$时（图7.30）正电荷在电场力作用
+下沿电阻从$A$极流向$B$极，使两极板积累的正、负电荷减少，
+我们若能将流到$B$板的正电荷不断取
+走，并把它送回$A$板，以保持$A$、$B$两板
+上电量不变，那么两板之间的电压就能
+保持不变。但是，将正电荷从$B$板取走
+送回$A$板，与正电荷从$A$板经$R$流向$B$板是两个完全不同的过程。在后一过程中，$A$、$B$板上的电荷
+所产生的电场力是使正电荷从电势高处向电势低处运动的动
+力；而在前一过程中，两极堆积的电荷产生的电场力，是正
+电荷要从低电势处向高电势处运动的阻力，正电荷必须克服
+这一阻力才能到达$A$板。因此，当只有静电场存在时，前一
+过程是不能实现的。只有非静电性质的作用，才能将流至$B$
+板的正电荷不断取走，取回$A$板去。通常用非静电力来表
+示这种非静电性质的作用，只有电源内部存在非静电力，如
+图7.30箭头所示，才能使两极间维持恒定的电压。
+
+温差电源的非静电力是与温度差和电子的浓度相联系的
+扩散作用。一般发电机的非静电力是电磁感应作用，尽管各
+种电源中的非静电力各不相同，但其作用都是使正电荷重新
+聚积到电源的正极上，负电荷重新聚积到负极上。
+
+再从能量转化观点来分析。非静电力只存在于电源内部，
+但电场力在电源的内部和外部都存在着。当负载和电源接通
+时，正电荷在电场力作用下从电势高的正极出发，经过负载到
+达势低的负极，然后在非静电力的作用下，克服电场力的阻
+碍作用，又从负极经电源内部回到正极。由于电荷克服电场
+力做功，系统的电势能要增加，因此正电荷从负极经电源内部
+回到正极的过程是使电能增加的过程。这个过程之所以能实
+现，正是由于非静电力耗费了其他形式的能对正电荷做功的
+结果。由此可见，电源的电能是通过非静电力对电荷做功的
+方式，从其他形式的能量转化来的，没有非静电力就不能实现
+这种能量的转化，也不能获得电能。至于电场力所作的功只决
+定于起点和终点的位置，而与路径无关。当正电荷从电源正极
+出发，绕整个电路一周又回到正极后，电场力作的总功为零。
+因此总的来讲，电场力并没有对电荷提供能量作出贡献。但是
+在电能的传递上，静电力的作用是重要的，电源内部的能量正
+是靠了静电力在电路上引起的电流才传递到负载上去的。
+
+设非静电力将正电荷$q$从电源负极$B$移到正极$A$所作
+的功为$W_{BA}$, 则移送单位正电荷所做的功为$W_{BA}/q$，
+这个量就
+称为电源的电动势，通常用符号$\mathcal{E}$来表示
+\[\mathcal{E}=\frac{W_{BA}}{q}\]
+由于非静电力所做的功的大小等于电源内其他形式的能量转
+化成电能的量，用此可以把电动势理解成单位正电荷通过电
+源时所发生的其他形式的能量转化成电能的量。
+
+在讨论电磁感应等现象时，会遇到整个闭合回路上都有
+非静电力的情形，还要用到回路电动势的概念，回路电动势是
+指单位正电荷在绕回路一周的过程中，非静电力所做的功。
+
+\subsection{用半偏法测电流表内阻的实验条件}
+在教材图9.7所示电路中，设电源电动势为$\mathcal{E}$，
+内电阻为$r$, 电流表内阻的真实值为$r_g$. 当闭合电键$k_1$调整
+电位器$R$至电流表指针满偏时，由闭合电路欧姆定律有
+\begin{equation}
+    \mathcal{E}=I_g(R+r+r_g)
+\end{equation}
+
+当再闭合$k_2$调整电阻箱$R'$使电流表指针半偏时，设电
+路中总电流为$I$, 应有
+\begin{equation}
+    \mathcal{E}=I\left(R+r+\frac{R'r_g}{R'+r_g}\right)
+\end{equation}
+
+因电流表与$R'$并联，故
+\begin{equation*}
+    \frac{1}{2}I_g r_g=I\left(\frac{R'r_g}{R'+r_g}\right)
+\end{equation*}
+解出$I$, 可得
+\[I=\frac{I_g(R'+r_g)}{2R'}\]
+代入(7.2)式中得
+\begin{equation}
+    \mathcal{E}=\frac{I_g(R'+r_g)}{2R'}\left(R+r+\frac{R'r_g}{R'+r_g}\right)
+\end{equation}
+
+比较(7.1)式和(7.3)式可得
+\[R+r+r_g=\frac{R'+r_g}{2R'}\left(R+r+\frac{R'r_g}{R'+r_g}\right)\]
+则
+\begin{equation}
+    r_g=\frac{R+r}{R+r-R'}R'
+\end{equation}
+
+(7.4)式表示实验中测算电流表内阻真实值的表达式．这
+时电流表内阻的测量值$r'_g=R'$
+
+实验的相对误差
+\[\frac{\Delta r_g}{r_g}=\frac{|r_g-r'_g|}{r_g}\]
+将(7.4)式和$r'_g=R'$代入并化简，最后得到：
+\begin{equation}
+    \frac{\Delta r_g}{r_g}=\frac{R'}{R+r}
+\end{equation}
+
+由于$R\ll r$, 可将(7.4)、(7.5)两式简化为
+\[r_g=\frac{R}{R-R'}R',\qquad     \frac{\Delta r_g}{r_g}=\frac{R'}{R}\]
+
+从这两个式子可以看出，当$R\gg R'$时，才有$r_g=R'$,
+$\Delta r_g/r_g=0$, 这就是用半偏法测电流表内阻时必须满足的条件。
+做实验时，如果取$R=100R'$, 则$r_g=\frac{100}{99}R'$，用$R'$代替$r_g$所
+产生的相对误差
+$\Delta r_g/r_g=1\%$；
+如果取$R=50R'$, 则$r_g=\frac{50}{49}R'$
+用$R'$代替$r_g$所产生的相对误差
+$\Delta r_g/r_g=2\%$.
+
+以上讨论没有涉及电阻箱和电流表精确程度对实验的
+影响。
+
+
+\subsection{伏安法测电阻的误差分析}
+\subsubsection{安培表外接（教材图7.37甲）}
+在这种连接方式中，伏特表示数$U$等于待测电阻$R$两端
+的电压，而安培表的示数$I=I_R+I_V$, 因此$R$的真实值
+$R=U/I_R$，
+测量值$R'=\dfrac{U}{I}=\dfrac{RR_V}{R+R_V}$，
+即测量值实际上为$R$与
+$R_V$并联的等效电阻值。
+
+测量的绝对误差
+\[R=|R-R'|=R-\dfrac{RR_V}{R+R_V}=\dfrac{R^2}{R+R_V}\]
+相对误差
+\[\frac{\Delta R}{R}=\frac{R}{R+R_V}\]
+
+可见当待测电阻$R\ll R_V$时，采用安培表外接，可以使误
+差很小，相反若$R$很大，且接近$R_V$时，相对误差可达50\%.
+
+\subsubsection{安培表内接（教材图7.37乙）}
+在这种连接方式中，安培表示数等于通过待测电阻$R$中
+的电流，而伏特表的示数为$U=U_R+U_A$, 因此，$R$的真实值
+$R=U_R/I$，
+测量值$R'=\dfrac{U}{I}=R+R_A$, 即测量值实际为$R$与$R_A$
+串联的等效电阻值。
+
+测量的绝对误差$\Delta R=|R-R'|=R_A$，相对误差$\dfrac{\Delta R}{R}=\dfrac{R_A}{R}$
+
+可见当待测电阻 $R\gg R_A$时，采用安培表内接，可以使误
+差很小，相反若$R$很小，且接近$R_A$时，相对误差可达100\%.
+
+从上面的讨论可以得出，当待测电阻$R$满足下述关系式
+时，两种接法的相对误差相等。
+\[\frac{R_A}{R}=\frac{R}{R+R_V}\]
+整理得$R^2-R_AR-R_AR_V=0$.
+
+解这个方程，并考虑待测电阻只取正值，得
+\[R=\frac{R_A+\sqrt{R^2_A+4R_AR_V}}{2}\]
+
+\subsection{欧姆表表盘的刻度}
+
+在教材图7.38丙中，当红、黑表笔间接入某一
+电阻$R_2$时，通过电流表的电流强度
+\[I=\frac{\mathcal{E}}{R_g+r+R+R_x}\]
+
+由于干电池的内阻$r$跟$R_g$、$R$相比非常小，可以忽略不
+计，所以上式变为
+\begin{equation}
+    I=\frac{\mathcal{E}}{R_g+R+R_x}
+\end{equation}
+
+当电源电动势$\mathcal{E}$，电流表内阻$R_g$, 以及限流电阻$R$确定
+后，$I$随$R_x$改变，电流表指针偏转的角度与$R_x$的值相对应，如
+果在刻度盘上直接标出与$I$相对应的$R_x$值，就成为欧姆表。
+
+如果把红、黑表笔短接($R_x=0$)调节$R$的值使电路中的电
+流强度等于电流表的满偏电流$I_g$, 则
+\begin{equation}
+    I_g=\frac{\mathcal{E}}{R_g+R}
+\end{equation}
+即欧姆表的零阻值刻度应标在电流表满刻度处。
+
+如果把红、黑表笔断开（$R_x=\infty$），电路中电流强度为
+$I=0$, 电流表指针不发生偏转，因此欧姆表的无穷大电阻刻
+度应在电流表的电流为零处。
+
+表盘上$0<R<\infty$之间的刻度又怎样确定呢？
+
+首先确定中值电阻，比较(7.6)式和(7.7)式可知，当$R_x=R_g+R$时，$I_x=\frac{1}{2}I_g$，
+即电表指针只偏转满刻度的一半，也就是
+在欧姆表表盘的中心刻度处。此刻度值叫中值电阻$R_{\text{中}}$, 它等
+于电流表内阻$R_g$和限流电阻之和，$R_{\text{中}}=R_g+R$.
+
+然后根据
+\[I=\frac{\mathcal{E}}{R_{\text{中}}+R_x}=\frac{R_{\text{中}}}{R_{\text{中}}+R_x}I_g\]
+确定其他刻度。当$R_x$
+分别为中值电阻$R_{\text{中}}$的2倍、3倍、4倍……时，电路中的电流
+强度$I$分别为满偏电流$I_g$的$\dfrac{1}{3},\dfrac{1}{4},\dfrac{1}{5},\ldots$即电表指针的偏转角度为满偏时的
+$\dfrac{1}{3},\dfrac{1}{4},\dfrac{1}{5},\ldots$。
+当$R_x$的值分别为$R_{\text{中}}$的
+$\dfrac{1}{2},\dfrac{1}{3},\dfrac{1}{4},\ldots$时，电表指针的偏转角度则分别为满偏时的$\dfrac{2}{3},\dfrac{3}{4},\dfrac{4}{5},\ldots$
+所以欧姆表表盘的刻度是不均匀的．
+
+为了使欧姆表各挡共用一个标尺，一般都以$R\x1$挡的中
+值电阻为标准，成10倍地扩大．如$R\x1$挡中值电阻$R_{\text{中}}=
+10\Omega$, 此时表的总内阻$r_{\text{总}}=10\Omega$. 当$r_{\text{总}}=100\Omega$时，电表的$R_{\text{中}}=
+100\Omega$. 若$R_x=100\Omega$, 电表指针应指标尺正中刻度“10”的位
+置，读数应乘以10, 这就是$R\x10$挡．依此类推．可见，扩大
+欧姆表量程就是扩大表的总内阻$r_{\text{总}}$的值，实际上是通过欧
+姆表内的另一附加电路来实现的。
+
+由$I=\dfrac{R_{\text{中}}}{R_{\text{中}}+R_x}I_g$还可看出，当$R_x\ll R_{\text{中}}$时，有$I\approx I_g$, 此时
+指针偏转接近满偏，随$R_x$的变化，$I$的变化太小，表头受本身
+灵敏度限制，不易分辨，因而测量误差很大．当$R_x\gg R_{\text{中}}$时，
+$I\approx 0$, 同理可知，测量误差也很大．所以在实用上通常只用欧
+姆表中间一段来测量，一般取$0.1R_{\text{中}}$—$10R_{\text{中}}$这段范围．实际上
+欧姆表都有几个量程，每个量程的$R_{\text{中}}$都不同，但每个量程的
+可用范围都是$0.1R_{\text{中}}$—$10R_{\text{中}}$. 如$R_{\text{中}}=10\Omega$, 则测量范围为
+$1\Omega$—$100\Omega$, 如$R_{\text{中}}=100\Omega$, 则测量范围为$10\Omega$—$1000\Omega$。
+
+欧姆表的刻度是对设计电源电动势$\mathcal{E}$计算出来的。由
+于实际上电源电动势不可能总是正好等于$\mathcal{E}$，所以在欧姆表
+中还装有调零旋钮，以保证刻度正确。
 
 
 
