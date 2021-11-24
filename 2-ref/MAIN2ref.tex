@@ -189,6 +189,8 @@ subsubsection = {
 \usepackage{circuitikz}
 \usepackage{tkz-euclide}
 
+\usepackage{minitoc}
+\setcounter{minitocdepth}{3}  
 
 
 \begin{document}
@@ -216,6 +218,8 @@ subsubsection = {
 
 \maketitle
 
+\dominitoc
+
 \tableofcontents
 
 
@@ -225,8 +229,9 @@ subsubsection = {
 
 \mainmatter
 
-\input{1ref.tex}
 
+
+\input{1ref.tex}
 \input{2ref.tex}
 \input{3ref.tex}
 \input{4ref.tex}
@@ -234,20 +239,7 @@ subsubsection = {
 \input{6ref.tex}
 \input{7ref.tex}
 \input{8ref.tex}
-\input{9ref.tex}
 
-
-
-
-%\input{app1.tex}
-\backmatter
-%\input{app2.tex}
-
-
-
-%\begin{appendix}
-%	\input{app3.tex}
-%\end{appendix}
 
 
 
