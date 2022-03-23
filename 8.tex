@@ -12,7 +12,30 @@
 
 金属导体中的电流强度跟自由电子的定向移动速率有关系，它们之间的关系可以用下述的方法简单计算出来．
 \begin{figure}[htp]\centering
-    \includegraphics[scale=.6]{fig/8-1.png}
+\begin{tikzpicture}[>=latex]
+
+\draw(0,.6)--(5,.6);
+\draw(0,-.6)--(5,-.6);
+\draw (5,0) ellipse[x radius=.3, y radius=.6]; 
+\foreach \x in {0,1.5,3.5}
+{
+	\draw[dashed](\x,0)ellipse[x radius=.3, y radius=.6]; 
+	\draw(\x,.6) arc [start angle = 90, end angle=270, x radius=.3, y radius=.6];
+}
+\node at (3.5,0){$S$};
+\draw(1.5,.7)--(1.5,1.5);
+\draw(3.5,.7)--(3.5,1.5);
+\draw[<->](3.5,1.2)--node[fill=white]{$vt$}(1.5,1.2);
+
+	\tkzDefPoints{1.5/0/A, 2.5/0/B, 1.7/-.4/C, 2.7/-.4/D, 1.7/.4/E, 2.7/.4/F}
+\foreach \x in {A,B,C,D,E,F}
+{
+	\draw[->](\x)--+(.5,0);
+	\draw[fill=white](\x)node{\tiny $-$}circle (3.5pt);
+}
+
+
+\end{tikzpicture}	
     \caption{}
     \end{figure}
 
@@ -26,7 +49,17 @@
 
 金属导体中的电流是自由电子的定向移动形成的，从这种电子论的观点可以对欧姆定律作出微观解释．
 \begin{figure}[htp]\centering
-    \includegraphics[scale=.6]{fig/8-2.png}
+\begin{tikzpicture}[>=latex]
+\draw(0,.6)--(4,.6);
+\draw(0,-.6)--(4,-.6);
+\draw[dashed](0,0)ellipse[x radius=.3, y radius=.6]; 
+\draw (4,0)node[]{$S$} ellipse[x radius=.3, y radius=.6]; 
+\draw(0,.7)--(0,1.5);
+\draw(4,.7)--(4,1.5);
+\draw[<->](4,1.2)--node[fill=white]{$\ell$}(0,1.2);
+\draw(0,.6) arc [start angle = 90, end angle=270, x radius=.3, y radius=.6];
+
+\end{tikzpicture}
     \caption{}
     \end{figure}
 
@@ -555,12 +588,15 @@ X射线或放射性元素发出的放射线照射，也能使气体电离．能�
     \draw (\x:.5)--(\x:.75);
 }
 \node at (-1.5,-2){甲};
+\node at (-1.5,1.75){D};
+
+\draw[->] (-2,-.5) arc (250:-60:.5);
 
         \end{tikzpicture}\qquad\qquad  
         \begin{tikzpicture}[>=stealth, thick]
             \draw (0,0)--(0,2)to [empty diode, fill=black](3,2)to [lamp] (3,0)  to [battery](0,0);
             \node at (1.5,-1){乙}    ;
-            
+            \node at (1.5,2.75){D};
                     
         \end{tikzpicture}
         \caption{}
